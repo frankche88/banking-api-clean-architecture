@@ -1,10 +1,6 @@
-plugins {
-	id 'org.springframework.boot' version '2.0.3.RELEASE'
-}
 
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'io.spring.dependency-management'
 
 description = """banking-api-clean-architecture"""
 
@@ -15,11 +11,6 @@ tasks.withType(JavaCompile) {
 }
 
 
-
-repositories {
-        
-     maven { url "http://repo.maven.apache.org/maven2" }
-}
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.4.RELEASE'
     compile group: 'org.modelmapper', name: 'modelmapper', version:'0.7.5'

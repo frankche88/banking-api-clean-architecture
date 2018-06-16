@@ -1,15 +1,19 @@
 
-apply plugin: 'maven'
 
 
-group = 'banking'
-version = '0.0.1-SNAPSHOT'
 
 description = """banking-api-clean-architecture"""
 
+allprojects {
+    repositories {
+        maven { url "http://repo.maven.apache.org/maven2" } 
+    }
+}
 
-
-repositories {
-        
-     maven { url "http://repo.maven.apache.org/maven2" }
+subprojects {
+    group = 'banking'
+	version = '0.0.1-SNAPSHOT'
+	
+	
+		
 }
