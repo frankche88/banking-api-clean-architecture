@@ -1,1 +1,1 @@
-INSERT INTO customer(customer_id, first_name, last_name, active) VALUES(1, 'Juan', 'PÃ©rez', 1);
+INSERT INTO customer(customer_id, first_name, last_name, active) VALUES(1, 'Juan', 'Pérez', 1);

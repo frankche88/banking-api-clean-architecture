@@ -29,7 +29,23 @@ public class BankTransferController {
 		} catch(IllegalArgumentException ex) {
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
 		} catch(Exception ex) {
-			return this.responseHandler.getAppExceptionResponse();
+			ex.printStackTrace();
+			return this.responseHandler.getAppExceptionResponse(ex);
 		}
 	}
+	
+	
+	@RequestMapping(method = RequestMethod.GET, path = "transfers", consumes = "application/json; charset=UTF-8", produces = "application/json; charset=UTF-8")
+	public ResponseEntity<Object> hola(@RequestBody RequestBankTransferDto requestBankTransferDto) throws Exception {
+		try {
+			//transactionApplicationService.performTransfer(requestBankTransferDto);
+			return this.responseHandler.getOkCommandResponse("Transfer done!");
+		} catch(IllegalArgumentException ex) {
+			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			return this.responseHandler.getAppExceptionResponse(ex);
+		}
+	}
+	
 }

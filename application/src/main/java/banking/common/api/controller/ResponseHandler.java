@@ -47,4 +47,15 @@ public class ResponseHandler {
         responseDto.setResponse(responseErrorDto);
         return new ResponseEntity<Object>(responseDto.getResponse(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+	
+	public ResponseEntity<Object> getAppExceptionResponse(Throwable e)
+    {
+		ResponseDto responseDto = new ResponseDto();
+		List<ErrorDto> errorsDto = new ArrayList<ErrorDto>();
+        errorsDto.add(new ErrorDto("Server error" + e.getMessage()));
+        ResponseErrorDto responseErrorDto = new ResponseErrorDto(errorsDto);
+        responseErrorDto.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        responseDto.setResponse(responseErrorDto);
+        return new ResponseEntity<Object>(responseDto.getResponse(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
