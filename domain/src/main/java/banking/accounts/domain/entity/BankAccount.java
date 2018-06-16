@@ -1,5 +1,12 @@
 package banking.accounts.domain.entity;
 
+import static banking.common.application.Messages.ACCOUNT_LOCKED;
+import static banking.common.application.Messages.ACCOUNT_NO_IDENTITY;
+import static banking.common.application.Messages.AMOUNT_MISSING;
+import static banking.common.application.Messages.AMOUNT_MUST_GREATER_ZERO;
+import static banking.common.application.Messages.BALANCE_NULL;
+import static banking.common.application.Messages.WITHDRAW_THE_AMOUNT_GREATER_THAN_BALANCE;
+
 import java.math.BigDecimal;
 
 import banking.common.application.Notification;
@@ -64,29 +71,29 @@ public class BankAccount {
     
     private void validateAmount(Notification notification, BigDecimal amount) {
         if (amount == null) {
-            notification.addError("amount is missing");
+            notification.addError(AMOUNT_MISSING);
             return;
         }
         if (amount.signum() <= 0) {
-            notification.addError("The amount must be greater than zero");
+            notification.addError(AMOUNT_MUST_GREATER_ZERO);
         }
     }
     
     private void validateBankAccount(Notification notification) {
         if (!this.hasIdentity()) {
-            notification.addError("The account has no identity");
+            notification.addError(ACCOUNT_NO_IDENTITY);
         }
         if (this.isLocked) {
-        	notification.addError("The account is locked");
+        	notification.addError(ACCOUNT_LOCKED);
         }
     }
     
     private void validateBalance(Notification notification, BigDecimal amount) {
         if (this.balance == null) {
-            notification.addError("balance cannot be null");
+            notification.addError(BALANCE_NULL);
         }
         if (!this.canBeWithdrawed(amount)) {
-        	notification.addError("Cannot withdraw in the account, amount is greater than balance");
+        	notification.addError(WITHDRAW_THE_AMOUNT_GREATER_THAN_BALANCE);
         }
     }
 
