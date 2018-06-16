@@ -1,0 +1,2 @@
+INSERT INTO bank_account(bank_account_id, number, balance, locked, customer_id) VALUES(1, '123-456-001', 1500, 0, 1);
+INSERT INTO bank_account(bank_account_id, number, balance, locked, customer_id) VALUES(2, '123-456-002', 1800, 0, 1);

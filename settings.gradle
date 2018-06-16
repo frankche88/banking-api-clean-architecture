@@ -1,1 +1,2 @@
+include 'domain', 'application'
 rootProject.name = 'clean-architecture'
