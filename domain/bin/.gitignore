@@ -1,2 +1,7 @@
-/main/
-/test/
+/application-development.properties
+/application-production.properties
+/application.properties
+/banking/
+/db/
+/hibernate/
+/test-spring-context.xml
