@@ -2,12 +2,12 @@ package banking.transactions.domain.service;
 
 import java.math.BigDecimal;
 
-import org.springframework.stereotype.Service;
+import javax.inject.Named;
 
 import banking.accounts.domain.entity.BankAccount;
 import banking.common.application.Notification;
 
-@Service
+@Named
 public class TransferDomainService {
 	public void performTransfer(BankAccount originAccount, BankAccount destinationAccount, BigDecimal amount)
 			throws IllegalArgumentException {

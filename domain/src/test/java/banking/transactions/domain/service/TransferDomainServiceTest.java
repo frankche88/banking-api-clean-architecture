@@ -6,20 +6,15 @@ import java.math.BigDecimal;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import banking.accounts.domain.entity.BankAccount;
-import banking.transactions.domain.service.TransferDomainService;
 
-@ContextConfiguration({ "classpath:test-spring-context.xml" })
-@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration({ "classpath:test-spring-context.xml" })
+//@RunWith(SpringJUnit4ClassRunner.class)
 public class TransferDomainServiceTest {
 
-    @Autowired
-	private TransferDomainService transferDomainService;
+    //@Autowired
+	private TransferDomainService transferDomainService = new TransferDomainService();
     private String originBankAccountNumber = "123-456-001";
     private String destinationBankAccountNumber = "123-456-002";
 
