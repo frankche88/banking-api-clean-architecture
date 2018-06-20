@@ -20,6 +20,7 @@ tasks.withType(JavaCompile) {
 
 dependencies {
 	compile project(':domain')
+	compile project(':infrastructure-hibernate')
 	
 	//compile group: 'log4j', name: 'log4j', version:'1.2.17'
 	
