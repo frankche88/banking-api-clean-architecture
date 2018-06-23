@@ -1,15 +1,16 @@
 package banking.accounts.infrastructure.hibernate.repository;
 
+import javax.inject.Named;
+
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.stereotype.Repository;
 
 import banking.accounts.domain.entity.BankAccount;
 import banking.accounts.domain.repository.BankAccountRepository;
 import banking.common.infrastructure.hibernate.repository.BaseHibernateRepository;
 
-@Repository
+@Named
 public class BankAccountHibernateRepository extends BaseHibernateRepository<BankAccount>
 		implements BankAccountRepository {
 	@Override

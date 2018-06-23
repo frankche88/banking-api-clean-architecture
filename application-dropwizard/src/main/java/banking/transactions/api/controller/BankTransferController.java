@@ -1,5 +1,6 @@
 package banking.transactions.api.controller;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -8,8 +9,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import banking.common.api.controller.ResponseHandler;
 import banking.transactions.application.TransactionApplicationService;
 import banking.transactions.application.dto.RequestBankTransferDto;
@@ -17,10 +16,10 @@ import banking.transactions.application.dto.RequestBankTransferDto;
 @Path("api/")
 public class BankTransferController {
 	
-	@Autowired
+	@Inject
 	TransactionApplicationService transactionApplicationService;
 	
-	@Autowired
+	@Inject
 	ResponseHandler responseHandler;
 
 	@POST

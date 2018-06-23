@@ -1,9 +1,8 @@
 package banking.transactions.application;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import banking.accounts.domain.entity.BankAccount;
 import banking.accounts.domain.repository.BankAccountRepository;
@@ -12,12 +11,12 @@ import banking.common.application.enumeration.RequestBodyType;
 import banking.transactions.application.dto.RequestBankTransferDto;
 import banking.transactions.domain.service.TransferDomainService;
 
-@Service()
+@Named
 public class TransactionApplicationService {
-	@Autowired
+	@Inject
 	private BankAccountRepository bankAccountRepository;
 
-	@Autowired
+	@Inject
 	private TransferDomainService transferDomainService;
 
 	@Transactional

@@ -1,7 +1,7 @@
 package banking.customers.application;
 
-import org.springframework.stereotype.Service;
+import javax.inject.Named;
 
-@Service()
+@Named
 public class CustomerApplicationService {
 }

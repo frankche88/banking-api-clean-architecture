@@ -1,30 +1,20 @@
 package banking;
 
-import com.hubspot.dropwizard.guice.GuiceBundle;
-
-import banking.transactions.api.controller.BankTransferController;
+import banking.application.hibernate.HbnBundle;
+import banking.application.hibernate.HbnModule;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
-import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import ru.vyarus.dropwizard.guice.GuiceBundle;
 
 public class BankingApplication extends Application<BankingConfiguration> {
-
-	private GuiceBundle<BankingConfiguration> guiceBundle;
 
 	public static void main(String[] args) throws Exception {
 		new BankingApplication().run(args);
 	}
 
-	private final HibernateBundle<BankingConfiguration> hibernateBundle = new HibernateBundle<BankingConfiguration>(
-			null) {
-		@Override
-		public DataSourceFactory getDataSourceFactory(BankingConfiguration configuration) {
-			return configuration.getDataSourceFactory();
-		}
-	};
 
 	@Override
 	public String getName() {
@@ -41,20 +31,20 @@ public class BankingApplication extends Application<BankingConfiguration> {
 			}
 		});
 
-		bootstrap.addBundle(hibernateBundle);
-
-		guiceBundle = GuiceBundle.<BankingConfiguration>newBuilder()
-				.addModule(new BankingModule())
-				.setConfigClass(BankingConfiguration.class).build();
-
-		bootstrap.addBundle(guiceBundle);
+		final HbnBundle hibernate = new HbnBundle();
+        // register hbn bundle before guice to make sure factory initialized before guice context start
+        bootstrap.addBundle(hibernate);
+        bootstrap.addBundle(GuiceBundle.builder()
+                .enableAutoConfig("banking.transactions","banking.customers", "banking.accounts")
+                .modules(new HbnModule(hibernate))
+                .build());
 
 	}
 
 	@Override
 	public void run(BankingConfiguration configuration, Environment environment) throws Exception {
 
-		environment.jersey().register(BankTransferController.class);
+		//environment.jersey().register(BankTransferController.class);
 		// environment.jersey().register(new ViewResource());
 
 	}
