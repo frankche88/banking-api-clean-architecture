@@ -1,5 +1,18 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'application'
 apply plugin: 'java'
 apply plugin: 'maven'
+
+mainClassName = 'banking.BankingApplication'
 
 
 description = """banking-api-clean-architecture"""
@@ -11,6 +24,9 @@ tasks.withType(JavaCompile) {
 }
 
 
+runShadow {
+  args 'server'
+}
 
 
 dependencies {
