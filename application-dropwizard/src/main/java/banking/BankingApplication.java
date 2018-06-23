@@ -1,5 +1,9 @@
 package banking;
 
+import java.io.File;
+import java.net.URI;
+import java.net.URL;
+
 import banking.application.hibernate.HbnBundle;
 import banking.application.hibernate.HbnModule;
 import io.dropwizard.Application;
@@ -12,6 +16,17 @@ import ru.vyarus.dropwizard.guice.GuiceBundle;
 public class BankingApplication extends Application<BankingConfiguration> {
 
 	public static void main(String[] args) throws Exception {
+		
+		if (args == null || args.length != 2) {
+			URL url = BankingApplication.class.getClassLoader().getResource("banking.yml");
+            if (url != null) {
+                URI uri = url.toURI();
+                if (!"jar".equals(uri.getScheme())) {
+                    args = new String[]{"server", new File(uri).getAbsolutePath()};
+                }
+            }
+        }
+		
 		new BankingApplication().run(args);
 	}
 

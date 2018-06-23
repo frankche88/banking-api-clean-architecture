@@ -1,0 +1,27 @@
+INFO   [09:43:58.458] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [09:43:58.474] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [09:43:58.661] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [09:44:44.203] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [09:44:44.203] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [09:44:44.391] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [10:06:21.276] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [10:06:21.292] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [10:06:21.464] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [10:08:18.347] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [10:08:18.347] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [10:08:18.520] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [10:14:06.212] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [10:14:06.212] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [10:14:06.374] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [10:29:46.099] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [10:29:46.099] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [10:29:46.271] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [10:33:28.868] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [10:33:28.871] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [10:33:29.070] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [10:34:54.832] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [10:34:54.835] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [10:34:55.003] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [10:35:28.329] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [10:35:28.331] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [10:35:28.513] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 

@@ -29,8 +29,8 @@ public class HbnBundle extends HibernateBundle<BankingConfiguration> {
 	protected void configure(org.hibernate.cfg.Configuration configuration) {
 		
 		// incluir xml files
-		configuration.addResource("/hibernate/bankAccount.hbm.xml");
-		configuration.addResource("/hibernate/custumer.hbm.xml");
+		configuration.addResource("hibernate/bankAccount.hbm.xml");
+		configuration.addResource("hibernate/custumer.hbm.xml");
 		
     }
 

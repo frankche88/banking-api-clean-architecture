@@ -1,26 +1,20 @@
-maxFileSizeInMB: 10
 
 server:
-  maxThreads: 40
-  minThreads: 8
-  maxQueuedRequests: 1024
-  allowedMethods: [GET,POST]
-  gzip:
-    enabled: true
-    bufferSize: 8KiB
   rootPath: /api/*
- # applicationContextPath: /
   applicationConnectors:
     - type: http
       port: 8080
   adminConnectors:
     - type: http
       port: 8081
+
+
+
 # Database settings.
 database:
   driverClass: com.mysql.jdbc.Driver
   user: b011265cf3f586
-  password:ef089e18
+  password: ef089e18
   url: 'jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/ad_339e765913be8f5'
   properties:
     charSet: UTF-8
@@ -36,6 +30,7 @@ database:
     hibernate.show_sql: true
     hibernate.generate_statistics: false
     hibernate.hbm2ddl.auto: validate # validates schema when service is started
+
   
 # Logging settings.
 logging:
