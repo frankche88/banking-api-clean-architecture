@@ -1,2 +1,2 @@
-include 'domain','infrastructure-hibernate', 'application-dropwizard', 'application-spring-boot'
+include 'banking-domain','application-service','infrastructure-hibernate', 'application-dropwizard', 'application-spring-boot'
 rootProject.name = 'clean-architecture'

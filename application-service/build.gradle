@@ -44,14 +44,11 @@ run {
 
 dependencies {
 	compile (project(':banking-domain')) {
-	    transitive = false
-	}
+    transitive = false
+}
 	compile (project(':infrastructure-hibernate')) {
-	    transitive = false
-	}
-	compile (project(':application-service')) {
-	    transitive = false
-	}
+    transitive = false
+}
 	
 	compile group: 'io.dropwizard', name: 'dropwizard-core', version: '1.3.2'
 	

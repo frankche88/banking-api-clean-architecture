@@ -1,0 +1,51 @@
+server:
+  maxThreads: 40
+  minThreads: 8
+  maxQueuedRequests: 1024
+  allowedMethods: [GET,POST]
+  gzip:
+    enabled: true
+    bufferSize: 8KiB
+  rootPath: /api/*
+ # applicationContextPath: /
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+# Database settings.
+database:
+  driverClass: com.mysql.jdbc.Driver
+  user: b011265cf3f586
+  password: ef089e18
+  url: 'jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/ad_339e765913be8f5'
+  maxWaitForConnection: 1s
+  validationQuery: "/* MyService Health Check */ SELECT 1"
+  minSize: 2
+  maxSize: 3
+  initialSize: 2
+  checkConnectionWhileIdle: false
+  evictionInterval: 10s
+  minIdleTime: 1 minute
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate.show_sql: true
+    hibernate.generate_statistics: false
+    hibernate.hbm2ddl.auto: validate # validates schema when service is started
+  
+# Logging settings.
+logging:
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+  appenders:
+    - type: console
+    - type: file
+      threshold: INFO
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: ./application.log
+      archivedLogFilenamePattern: ./application-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 7
+      timeZone: UTC
+      maxFileSize: 10MB

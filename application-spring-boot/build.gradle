@@ -19,8 +19,15 @@ tasks.withType(JavaCompile) {
 
 
 dependencies {
-	compile project(':domain')
-	compile project(':infrastructure-hibernate')
+	compile (project(':banking-domain')) {
+	    transitive = false
+	}
+	compile (project(':infrastructure-hibernate')) {
+	    transitive = false
+	}
+	compile (project(':application-service')) {
+	    transitive = false
+	}
 	
 	//compile group: 'log4j', name: 'log4j', version:'1.2.17'
 	
