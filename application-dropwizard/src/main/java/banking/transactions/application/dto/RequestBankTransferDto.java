@@ -8,6 +8,7 @@ import banking.common.application.dto.RequestBaseDto;
 import banking.common.application.enumeration.RequestBodyType;
 import banking.transactions.application.dto.deserializer.RequestBankTransferDtoDeserializer;
 
+
 @JsonDeserialize(using = RequestBankTransferDtoDeserializer.class)
 public class RequestBankTransferDto extends RequestBaseDto {
 	private String fromAccountNumber;

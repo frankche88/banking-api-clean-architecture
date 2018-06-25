@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 import banking.common.api.controller.ResponseHandler;
 import banking.transactions.application.TransactionApplicationService;
 import banking.transactions.application.dto.RequestBankTransferDto;
+import io.dropwizard.hibernate.UnitOfWork;
 
 @Path("api/")
 public class BankTransferController {
@@ -26,6 +27,7 @@ public class BankTransferController {
 	@Path("transfers")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
+	@UnitOfWork
 	public Response performTransfer(RequestBankTransferDto requestBankTransferDto) throws Exception {
 		try {
 			transactionApplicationService.performTransfer(requestBankTransferDto);
