@@ -24,22 +24,41 @@ tasks.withType(JavaCompile) {
 }
 
 
+shadowJar {
+    mergeServiceFiles()
+    classifier = null
+}
+
+
 runShadow {
-  args 'server'
+  //args 'server'
+  args  'server', 'src/main/resources/banking.yml'
+}
+
+run {
+    //args 'db', 'migrate', 'fileupload.yml'
+    args 'server', 'src/main/resources/banking.yml'
+
 }
 
 
 dependencies {
-	compile project(':domain')
-	compile project(':infrastructure-hibernate')
+	compile (project(':domain')) {
+    transitive = false
+}
+	compile (project(':infrastructure-hibernate')) {
+    transitive = false
+}
 	
-	compile group: 'io.dropwizard', name: 'dropwizard-core', version: '1.3.4'
+	compile group: 'io.dropwizard', name: 'dropwizard-core', version: '1.3.2'
 	
-	compile group: 'io.dropwizard', name: 'dropwizard-hibernate', version: '1.3.4'
+	compile group: 'io.dropwizard', name: 'dropwizard-hibernate', version: '1.3.2'
 	
-	compile group: 'io.dropwizard', name: 'dropwizard-migrations', version: '1.3.4'
+	compile group: 'io.dropwizard', name: 'dropwizard-migrations', version: '1.3.2'
 	
 	compile 'ru.vyarus:dropwizard-guicey:4.1.0'
+	
+	compile group: 'mysql', name: 'mysql-connector-java', version:'5.1.42'
 	
 	
 	

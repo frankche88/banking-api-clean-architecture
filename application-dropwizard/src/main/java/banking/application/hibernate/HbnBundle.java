@@ -1,8 +1,11 @@
 package banking.application.hibernate;
 
+import java.io.InputStream;
+
 import com.google.common.collect.ImmutableList;
 
 import banking.BankingConfiguration;
+import banking.accounts.infrastructure.hibernate.repository.BankAccountHibernateRepository;
 import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.hibernate.SessionFactoryFactory;
@@ -28,9 +31,18 @@ public class HbnBundle extends HibernateBundle<BankingConfiguration> {
 	
 	protected void configure(org.hibernate.cfg.Configuration configuration) {
 		
+
+		
+		InputStream inputBankAccount = BankAccountHibernateRepository.class.getClassLoader().getResourceAsStream("hibernate/bankAccount.hbm.xml");
+		
+		InputStream inputCustomer = BankAccountHibernateRepository.class.getClassLoader().getResourceAsStream("hibernate/customer.hbm.xml");
+		
+
+		
+		
 		// incluir xml files
-		configuration.addResource("/hibernate/bankAccount.hbm.xml");
-		configuration.addResource("/hibernate/custumer.hbm.xml");
+		configuration.addInputStream(inputBankAccount);// .addFile(file);// File("hibernate/bankAccount.hbm.xml");
+		configuration.addInputStream(inputCustomer);//configuration.addFile("hibernate/custumer.hbm.xml");
 		
     }
 

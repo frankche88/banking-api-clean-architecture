@@ -1,15 +1,17 @@
 package banking.common.infrastructure.hibernate.repository;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+@Named
 public class BaseHibernateRepository<T> implements BaseRepository<T> {
 
 	protected SessionFactory sessionFactory;
 
-	@Named
+	@Inject
 	public void setSessionFactory(final SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

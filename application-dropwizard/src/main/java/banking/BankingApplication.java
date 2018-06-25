@@ -35,7 +35,7 @@ public class BankingApplication extends Application<BankingConfiguration> {
         // register hbn bundle before guice to make sure factory initialized before guice context start
         bootstrap.addBundle(hibernate);
         bootstrap.addBundle(GuiceBundle.builder()
-                .enableAutoConfig("banking.transactions","banking.customers", "banking.accounts")
+                .enableAutoConfig("banking")
                 .modules(new HbnModule(hibernate))
                 .build());
 

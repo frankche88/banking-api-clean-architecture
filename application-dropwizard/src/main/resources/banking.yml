@@ -1,5 +1,3 @@
-maxFileSizeInMB: 10
-
 server:
   maxThreads: 40
   minThreads: 8
@@ -20,18 +18,18 @@ server:
 database:
   driverClass: com.mysql.jdbc.Driver
   user: b011265cf3f586
-  password:ef089e18
+  password: ef089e18
   url: 'jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/ad_339e765913be8f5'
-  properties:
-    charSet: UTF-8
   maxWaitForConnection: 1s
   validationQuery: "/* MyService Health Check */ SELECT 1"
-  minSize: 8
-  maxSize: 32
+  minSize: 2
+  maxSize: 3
+  initialSize: 2
   checkConnectionWhileIdle: false
   evictionInterval: 10s
   minIdleTime: 1 minute
   properties:
+    charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
     hibernate.show_sql: true
     hibernate.generate_statistics: false

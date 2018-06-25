@@ -1,6 +1,7 @@
 package banking.accounts.infrastructure.hibernate.repository;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
@@ -11,6 +12,7 @@ import banking.accounts.domain.repository.BankAccountRepository;
 import banking.common.infrastructure.hibernate.repository.BaseHibernateRepository;
 
 @Named
+@Singleton
 public class BankAccountHibernateRepository extends BaseHibernateRepository<BankAccount>
 		implements BankAccountRepository {
 	@Override
