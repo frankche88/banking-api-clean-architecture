@@ -1,0 +1,15 @@
+
+## autenticacion
+
+curl -X POST http://localhost:8080/api/security \
+	-H "Content-Type: application/x-www-form-urlencoded"  \
+	-d "grant_type=password&username=username&password=password" 
+
+
+
+##trasferencia
+curl -X POST http://localhost:8080/api/transfers \
+	-H "Content-type: application/json" \
+	-H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJKb2UifQ.-tp1zIkIv5Ro7tEN7NuCPR3Q4xogcWKExz1ECOmPFJV5vVMoJBfkiZkQVz-wOKXLej2EtbJJAqN1zRw-khldIQ" \
+	-d '{"fromAccountNumber": "123-456-001","toAccountNumber": "123-456-002","amount": 20}'
+	

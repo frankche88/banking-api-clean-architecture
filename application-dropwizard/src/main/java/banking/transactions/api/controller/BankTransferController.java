@@ -1,5 +1,6 @@
 package banking.transactions.api.controller;
 
+import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -14,7 +15,8 @@ import banking.transactions.application.TransactionApplicationService;
 import banking.transactions.application.dto.RequestBankTransferDto;
 import io.dropwizard.hibernate.UnitOfWork;
 
-@Path("api/")
+@Path("/")
+@PermitAll
 public class BankTransferController {
 	
 	@Inject
@@ -24,7 +26,7 @@ public class BankTransferController {
 	ResponseHandler responseHandler;
 
 	@POST
-	@Path("transfers")
+	@Path("/transfers")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork

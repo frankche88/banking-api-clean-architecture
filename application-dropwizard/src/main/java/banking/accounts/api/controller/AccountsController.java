@@ -4,6 +4,6 @@ import javax.ws.rs.Path;
 
 
 
-@Path("api/accounts/")
+@Path("accounts/")
 public class AccountsController {
 }
