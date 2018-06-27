@@ -1,5 +1,6 @@
 package banking.transactions.domain.service;
 
+import static banking.common.application.Messages.*;
 import java.math.BigDecimal;
 
 import javax.inject.Named;
@@ -28,21 +29,21 @@ public class TransferDomainService {
     
     private void validateAmount(Notification notification, BigDecimal amount) {
         if (amount == null) {
-            notification.addError("amount is missing");
+            notification.addError(AMOUNT_MISSING);
             return;
         }
         if (amount.signum() <= 0) {
-            notification.addError("The amount must be greater than zero");
+            notification.addError(AMOUNT_MUST_GREATER_ZERO);
         }
     }
     
     private void validateBankAccounts(Notification notification, BankAccount originAccount, BankAccount destinationAccount) {
         if (originAccount == null || destinationAccount == null) {
-            notification.addError("Cannot perform the transfer. Invalid data in bank accounts specifications");
+            notification.addError(INVALID_BANK_ACCOUNT_SPECIFICATIONS);
             return;
         }
         if (originAccount.getNumber().equals(destinationAccount.getNumber())) {
-            notification.addError("Cannot transfer money to the same bank account");
+            notification.addError(SAME_BANK_ACCOUNTS);
         }
     }
 }
