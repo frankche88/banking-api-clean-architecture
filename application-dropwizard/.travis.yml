@@ -1,0 +1,8 @@
+ language: java
+ deploy:
+   provider: cloudfoundry
+   username: frank.che88@gmail.com
+   password: supersecretpassword
+   api: https://api.run.pivotal.io
+   organization: myawesomeorganization
+   space: staging

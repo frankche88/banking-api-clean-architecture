@@ -15,7 +15,7 @@ import banking.transactions.application.TransactionApplicationService;
 import banking.transactions.application.dto.RequestBankTransferDto;
 import io.dropwizard.hibernate.UnitOfWork;
 
-@Path("/")
+@Path("/api")
 @PermitAll
 public class BankTransferController {
 	

@@ -17,7 +17,7 @@ import io.dropwizard.hibernate.UnitOfWork;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-@Path("/")
+@Path("/api")
 public class SecurityController {
 
 	@POST

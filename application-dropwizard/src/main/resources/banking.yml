@@ -6,7 +6,6 @@ server:
   gzip:
     enabled: true
     bufferSize: 8KiB
-  rootPath: /api/*
  # applicationContextPath: /
   applicationConnectors:
     - type: http
