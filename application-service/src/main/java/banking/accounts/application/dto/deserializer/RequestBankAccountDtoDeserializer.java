@@ -18,7 +18,7 @@ import banking.common.application.enumeration.RequestBodyType;
 
 public class RequestBankAccountDtoDeserializer extends JsonDeserializer<RequestBankAccountDto> {
 	
-	Logger logger = LoggerFactory.getLogger(RequestBankAccountDtoDeserializer.class);
+	private Logger logger = LoggerFactory.getLogger(RequestBankAccountDtoDeserializer.class);
 	
 	@Override
 	public RequestBankAccountDto deserialize(JsonParser jsonParser, DeserializationContext ctxt)
@@ -39,6 +39,8 @@ public class RequestBankAccountDtoDeserializer extends JsonDeserializer<RequestB
             
             requestBankTransferDto = new RequestBankAccountDto(id, accountNumber, balance, isLocked, customerId, RequestBodyType.VALID);
     	} catch(Exception ex) {
+    		
+    		logger.error("RequestBankAccountDtoDeserializer", ex);
     		requestBankTransferDto = new RequestBankAccountDto(RequestBodyType.INVALID);
     	}
         return requestBankTransferDto;
