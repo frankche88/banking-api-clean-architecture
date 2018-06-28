@@ -1,2 +1,21 @@
-INSERT INTO bank_account(bank_account_id, number, balance, locked, customer_id) VALUES(1, '123-456-001', 1500, 0, 1);
-INSERT INTO bank_account(bank_account_id, number, balance, locked, customer_id) VALUES(2, '123-456-002', 1800, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-001', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-002', 1800, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-003', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-004', 1800, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-005', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-006', 1800, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-007', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-008', 1800, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-009', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-010', 1800, 0, 1);
+
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-101', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-102', 1800, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-103', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-104', 1800, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-105', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-106', 1800, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-107', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-108', 1800, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-109', 1500, 0, 1);
+INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-110', 1800, 0, 1);

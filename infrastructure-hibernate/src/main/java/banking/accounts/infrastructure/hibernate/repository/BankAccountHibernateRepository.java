@@ -110,7 +110,7 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 		
 		TypedQuery<Long> indexQuery = getSession().createQuery(indexCriteria);
 		
-		indexQuery.setFirstResult(pageNumber - 1);
+		indexQuery.setFirstResult((pageNumber - 1) * pageSize);
 		indexQuery.setMaxResults(pageSize);
 		
 		List<Long> indexPaged = indexQuery.getResultList();
@@ -122,7 +122,7 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 		
 		CriteriaQuery<BankAccount> select = criteriaQuery.select(from);
 		
-		Predicate condition = criteriaBuilder.in(from.get("number")).in(indexPaged);
+		Predicate condition = from.get("id").in(indexPaged);
 		
 		
 

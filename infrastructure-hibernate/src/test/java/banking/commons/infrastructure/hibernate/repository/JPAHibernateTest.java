@@ -41,13 +41,22 @@ public class JPAHibernateTest {
 		configuration.setProperty("hibernate.connection.url", "jdbc:h2:mem:test;MODE=MYSQL;INIT=RUNSCRIPT FROM 'classpath:db/migration/V1_1__create_customer.sql'\\;RUNSCRIPT FROM 'classpath:db/migration/V1_2__create_bank_account.sql'");
 
 		configuration.setProperty("hibernate.hbm2ddl.auto", "validate");
+		
+		configuration.setProperty("hibernate.show_sql", "true");
+		
+		configuration.setProperty("org.hibernate.type", "true");
+		
+		
+		configuration.setProperty("hibernate.current_session_context_class", "org.hibernate.context.internal.ThreadLocalSessionContext");
 
 		sessionFactory = configuration.buildSessionFactory();
 	}
 
 	@Before
 	public void initializeDatabase() {
-		Session session = sessionFactory.openSession();
+		session = sessionFactory.getCurrentSession();
+		
+		session.beginTransaction();
 		session.doWork(new Work() {
 			@Override
 			public void execute(Connection connection) throws SQLException {
@@ -63,6 +72,8 @@ public class JPAHibernateTest {
 				}
 			}
 		});
+		
+		session.getTransaction().commit();
 	}
 
 	@After

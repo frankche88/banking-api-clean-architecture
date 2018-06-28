@@ -1,4 +1,4 @@
-package banking.customers.infrastructure.hibernate.repository;
+package banking.accounts.infrastructure.hibernate.repository;
 
 import static junit.framework.TestCase.assertNotNull;
 
@@ -6,12 +6,12 @@ import java.util.List;
 
 import org.junit.Test;
 
+import banking.accounts.domain.entity.BankAccount;
 import banking.commons.infrastructure.hibernate.repository.JPAHibernateTest;
-import banking.customers.domain.entity.Customer;
 
-public class CustomerHibernateRepositoryTest extends JPAHibernateTest {
+public class BankAccountHibernateRepositoryTest extends JPAHibernateTest {
 	
-	CustomerHibernateRepository customerRepository = new CustomerHibernateRepository();
+	BankAccountHibernateRepository customerRepository = new BankAccountHibernateRepository();
 	
 	@Test
     public void testGetObjectById_success() {
@@ -20,7 +20,7 @@ public class CustomerHibernateRepositoryTest extends JPAHibernateTest {
 		
 		customerRepository.setSessionFactory(sessionFactory);
 		
-		List<Customer> book = customerRepository.findAllPaginated(1, 10);
+		List<BankAccount> book = customerRepository.findAllPaginated(3, 5);
 		
         assertNotNull(book);
         
