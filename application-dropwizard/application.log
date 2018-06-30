@@ -1,0 +1,312 @@
+INFO   [10:40:33.983] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [10:40:33.986] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [10:40:34.102] [main] o.h.Version -  HHH000412: Hibernate Core {[WORKING]} 
+INFO   [10:40:34.103] [main] o.h.c.Environment -  HHH000206: hibernate.properties not found 
+INFO   [10:40:34.113] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [10:40:34.692] [main] o.h.a.c.Version -  HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+INFO   [10:40:37.492] [main] o.h.d.Dialect -  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+INFO   [10:40:37.839] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.util.Currency] overrides previous : org.hibernate.type.CurrencyType@13ef7fa1 
+INFO   [10:40:37.840] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Duration] overrides previous : org.hibernate.type.DurationType@23b1aa9 
+INFO   [10:40:37.840] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Instant] overrides previous : org.hibernate.type.InstantType@54489296 
+INFO   [10:40:37.840] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDate] overrides previous : org.hibernate.type.LocalDateType@4e8598d9 
+INFO   [10:40:37.840] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDateTime] overrides previous : org.hibernate.type.LocalDateTimeType@267ff4df 
+INFO   [10:40:37.840] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalTime] overrides previous : org.hibernate.type.LocalTimeType@7c4b5ceb 
+INFO   [10:40:37.840] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetDateTime] overrides previous : org.hibernate.type.OffsetDateTimeType@6c07add6 
+INFO   [10:40:37.840] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetTime] overrides previous : org.hibernate.type.OffsetTimeType@e26a3df 
+INFO   [10:40:37.840] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.ZonedDateTime] overrides previous : org.hibernate.type.ZonedDateTimeType@57a667c8 
+INFO   [11:02:23.461] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [11:02:23.465] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [11:02:23.587] [main] o.h.Version -  HHH000412: Hibernate Core {[WORKING]} 
+INFO   [11:02:23.589] [main] o.h.c.Environment -  HHH000206: hibernate.properties not found 
+INFO   [11:02:23.602] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [11:02:24.206] [main] o.h.a.c.Version -  HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+INFO   [11:02:27.027] [main] o.h.d.Dialect -  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+INFO   [11:02:27.365] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.util.Currency] overrides previous : org.hibernate.type.CurrencyType@13ef7fa1 
+INFO   [11:02:27.365] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Duration] overrides previous : org.hibernate.type.DurationType@23b1aa9 
+INFO   [11:02:27.365] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Instant] overrides previous : org.hibernate.type.InstantType@54489296 
+INFO   [11:02:27.365] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDate] overrides previous : org.hibernate.type.LocalDateType@4e8598d9 
+INFO   [11:02:27.365] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDateTime] overrides previous : org.hibernate.type.LocalDateTimeType@267ff4df 
+INFO   [11:02:27.365] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalTime] overrides previous : org.hibernate.type.LocalTimeType@7c4b5ceb 
+INFO   [11:02:27.366] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetDateTime] overrides previous : org.hibernate.type.OffsetDateTimeType@6c07add6 
+INFO   [11:02:27.366] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetTime] overrides previous : org.hibernate.type.OffsetTimeType@e26a3df 
+INFO   [11:02:27.366] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.ZonedDateTime] overrides previous : org.hibernate.type.ZonedDateTimeType@57a667c8 
+INFO   [11:02:28.428] [main] i.d.s.ServerFactory -  Starting Banking-api 
+INFO   [11:02:28.523] [main] o.e.j.s.SetUIDListener -  Opened application@b77b0a0{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [11:02:28.523] [main] o.e.j.s.SetUIDListener -  Opened admin@15be68b{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [11:02:28.525] [main] o.e.j.s.Server -  jetty-9.4.z-SNAPSHOT; built: 2018-05-03T15:56:21.710Z; git: daa59876e6f384329b122929e70a80934569428c; jvm 1.8.0_101-b13 
+INFO   [11:02:28.744] [main] r.v.d.g.m.i.f.j.p.JerseyProviderInstaller -  providers = 
+
+    Dynamic features
+        (banking.oauth.OAuthDynamicFeature)
+ 
+INFO   [11:02:28.971] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /api/accounts/ (banking.accounts.api.controller.AccountsController)
+    POST    /api/accounts/ (banking.accounts.api.controller.AccountsController)
+    GET     /api/accounts/{ID} (banking.accounts.api.controller.AccountsController)
+    PUT     /api/accounts/{ID} (banking.accounts.api.controller.AccountsController)
+    GET     /api/customers/{customerId} (banking.customers.api.controller.CustomerController)
+    POST    /api/security (banking.oauth.api.controller.SecurityController)
+    GET     /api/transfers (banking.transactions.api.controller.BankTransferController)
+    POST    /api/transfers (banking.transactions.api.controller.BankTransferController)
+ 
+WARN   [11:02:28.972] [main] o.g.j.i.Errors -  The following warnings have been detected: WARNING: A HTTP GET method, public javax.ws.rs.core.Response banking.transactions.api.controller.BankTransferController.hola(banking.transactions.application.dto.RequestBankTransferDto) throws java.lang.Exception, should not consume any entity.
+ 
+INFO   [11:02:28.973] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@b842275{/,null,AVAILABLE} 
+INFO   [11:02:28.976] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:02:28.982] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4f563f96{/,null,AVAILABLE} 
+INFO   [11:02:28.993] [main] o.e.j.s.AbstractConnector -  Started application@b77b0a0{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [11:02:28.998] [main] o.e.j.s.AbstractConnector -  Started admin@15be68b{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [11:02:28.998] [main] o.e.j.s.Server -  Started @7057ms 
+ERROR  [11:03:42.594] [dw-22 - GET /api/customers/2] b.c.a.c.ResponseHandler -  null 
+java.lang.NullPointerException: null
+	at banking.customers.application.CustomerApplicationService.getCustomerById(CustomerApplicationService.java:19)
+	at banking.customers.api.controller.CustomerController.getCustomerById(CustomerController.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:144)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:161)
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:160)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:99)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:389)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:347)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:102)
+	at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:326)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267)
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317)
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:305)
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1154)
+	at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:473)
+	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:427)
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:388)
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:341)
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:228)
+	at io.dropwizard.jetty.NonblockingServletHolder.handle(NonblockingServletHolder.java:49)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1655)
+	at io.dropwizard.servlets.ThreadNameFilter.doFilter(ThreadNameFilter.java:35)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1642)
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.handle(AllowedMethodsFilter.java:45)
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.doFilter(AllowedMethodsFilter.java:39)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1642)
+	at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:89)
+	at com.google.inject.servlet.ManagedFilterPipeline.dispatch(ManagedFilterPipeline.java:120)
+	at com.google.inject.servlet.GuiceFilter.doFilter(GuiceFilter.java:135)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1642)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at com.codahale.metrics.jetty9.InstrumentedHandler.handle(InstrumentedHandler.java:239)
+	at io.dropwizard.jetty.RoutingHandler.handle(RoutingHandler.java:52)
+	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:724)
+	at io.dropwizard.jetty.BiDiGzipHandler.handle(BiDiGzipHandler.java:67)
+	at org.eclipse.jetty.server.handler.RequestLogHandler.handle(RequestLogHandler.java:56)
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:169)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:531)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:352)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:281)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:760)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:678)
+	at java.lang.Thread.run(Thread.java:745)
+INFO   [11:06:32.934] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [11:06:32.937] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [11:06:33.069] [main] o.h.Version -  HHH000412: Hibernate Core {[WORKING]} 
+INFO   [11:06:33.071] [main] o.h.c.Environment -  HHH000206: hibernate.properties not found 
+INFO   [11:06:33.082] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [11:06:33.677] [main] o.h.a.c.Version -  HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+INFO   [11:06:36.401] [main] o.h.d.Dialect -  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+INFO   [11:06:36.732] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.util.Currency] overrides previous : org.hibernate.type.CurrencyType@13ef7fa1 
+INFO   [11:06:36.732] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Duration] overrides previous : org.hibernate.type.DurationType@23b1aa9 
+INFO   [11:06:36.732] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Instant] overrides previous : org.hibernate.type.InstantType@54489296 
+INFO   [11:06:36.732] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDate] overrides previous : org.hibernate.type.LocalDateType@4e8598d9 
+INFO   [11:06:36.732] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDateTime] overrides previous : org.hibernate.type.LocalDateTimeType@267ff4df 
+INFO   [11:06:36.732] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalTime] overrides previous : org.hibernate.type.LocalTimeType@7c4b5ceb 
+INFO   [11:06:36.732] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetDateTime] overrides previous : org.hibernate.type.OffsetDateTimeType@6c07add6 
+INFO   [11:06:36.732] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetTime] overrides previous : org.hibernate.type.OffsetTimeType@e26a3df 
+INFO   [11:06:36.733] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.ZonedDateTime] overrides previous : org.hibernate.type.ZonedDateTimeType@57a667c8 
+INFO   [11:09:06.515] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [11:09:06.518] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [11:09:06.645] [main] o.h.Version -  HHH000412: Hibernate Core {[WORKING]} 
+INFO   [11:09:06.647] [main] o.h.c.Environment -  HHH000206: hibernate.properties not found 
+INFO   [11:09:06.658] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [11:09:07.221] [main] o.h.a.c.Version -  HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+INFO   [11:09:09.547] [main] o.h.d.Dialect -  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+INFO   [11:09:09.880] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.util.Currency] overrides previous : org.hibernate.type.CurrencyType@13ef7fa1 
+INFO   [11:09:09.880] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Duration] overrides previous : org.hibernate.type.DurationType@23b1aa9 
+INFO   [11:09:09.880] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Instant] overrides previous : org.hibernate.type.InstantType@54489296 
+INFO   [11:09:09.880] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDate] overrides previous : org.hibernate.type.LocalDateType@4e8598d9 
+INFO   [11:09:09.880] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDateTime] overrides previous : org.hibernate.type.LocalDateTimeType@267ff4df 
+INFO   [11:09:09.880] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalTime] overrides previous : org.hibernate.type.LocalTimeType@7c4b5ceb 
+INFO   [11:09:09.880] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetDateTime] overrides previous : org.hibernate.type.OffsetDateTimeType@6c07add6 
+INFO   [11:09:09.880] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetTime] overrides previous : org.hibernate.type.OffsetTimeType@e26a3df 
+INFO   [11:09:09.880] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.ZonedDateTime] overrides previous : org.hibernate.type.ZonedDateTimeType@57a667c8 
+INFO   [11:09:10.943] [main] i.d.s.ServerFactory -  Starting Banking-api 
+INFO   [11:09:11.010] [main] o.e.j.s.SetUIDListener -  Opened application@3a70575{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [11:09:11.010] [main] o.e.j.s.SetUIDListener -  Opened admin@5d96d434{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [11:09:11.012] [main] o.e.j.s.Server -  jetty-9.4.z-SNAPSHOT; built: 2018-05-03T15:56:21.710Z; git: daa59876e6f384329b122929e70a80934569428c; jvm 1.8.0_101-b13 
+INFO   [11:09:11.372] [main] r.v.d.g.m.i.f.j.p.JerseyProviderInstaller -  providers = 
+
+    Dynamic features
+        (banking.oauth.OAuthDynamicFeature)
+ 
+INFO   [11:09:11.594] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /api/accounts/ (banking.accounts.api.controller.AccountsController)
+    POST    /api/accounts/ (banking.accounts.api.controller.AccountsController)
+    GET     /api/accounts/{ID} (banking.accounts.api.controller.AccountsController)
+    PUT     /api/accounts/{ID} (banking.accounts.api.controller.AccountsController)
+    GET     /api/customers/{customerId} (banking.customers.api.controller.CustomerController)
+    POST    /api/security (banking.oauth.api.controller.SecurityController)
+    GET     /api/transfers (banking.transactions.api.controller.BankTransferController)
+    POST    /api/transfers (banking.transactions.api.controller.BankTransferController)
+ 
+WARN   [11:09:11.596] [main] o.g.j.i.Errors -  The following warnings have been detected: WARNING: A HTTP GET method, public javax.ws.rs.core.Response banking.transactions.api.controller.BankTransferController.hola(banking.transactions.application.dto.RequestBankTransferDto) throws java.lang.Exception, should not consume any entity.
+ 
+INFO   [11:09:11.597] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6cb662e8{/,null,AVAILABLE} 
+INFO   [11:09:11.600] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:09:11.606] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@61bf405d{/,null,AVAILABLE} 
+INFO   [11:09:11.618] [main] o.e.j.s.AbstractConnector -  Started application@3a70575{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [11:09:11.622] [main] o.e.j.s.AbstractConnector -  Started admin@5d96d434{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [11:09:11.622] [main] o.e.j.s.Server -  Started @6629ms 
+ERROR  [11:09:16.809] [dw-22 - GET /api/customers/2] b.c.a.c.ResponseHandler -  No session currently bound to execution context 
+org.hibernate.HibernateException: No session currently bound to execution context
+	at org.hibernate.context.internal.ManagedSessionContext.currentSession(ManagedSessionContext.java:58)
+	at org.hibernate.internal.SessionFactoryImpl.getCurrentSession(SessionFactoryImpl.java:464)
+	at banking.common.infrastructure.hibernate.repository.BaseHibernateRepository.getSession(BaseHibernateRepository.java:20)
+	at banking.customers.infrastructure.hibernate.repository.CustomerHibernateRepository.findById(CustomerHibernateRepository.java:27)
+	at banking.customers.application.CustomerApplicationService.getCustomerById(CustomerApplicationService.java:21)
+	at banking.customers.api.controller.CustomerController.getCustomerById(CustomerController.java:32)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:144)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:161)
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:160)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:99)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:389)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:347)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:102)
+	at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:326)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267)
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317)
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:305)
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1154)
+	at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:473)
+	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:427)
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:388)
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:341)
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:228)
+	at io.dropwizard.jetty.NonblockingServletHolder.handle(NonblockingServletHolder.java:49)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1655)
+	at io.dropwizard.servlets.ThreadNameFilter.doFilter(ThreadNameFilter.java:35)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1642)
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.handle(AllowedMethodsFilter.java:45)
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.doFilter(AllowedMethodsFilter.java:39)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1642)
+	at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:89)
+	at com.google.inject.servlet.ManagedFilterPipeline.dispatch(ManagedFilterPipeline.java:120)
+	at com.google.inject.servlet.GuiceFilter.doFilter(GuiceFilter.java:135)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1642)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at com.codahale.metrics.jetty9.InstrumentedHandler.handle(InstrumentedHandler.java:239)
+	at io.dropwizard.jetty.RoutingHandler.handle(RoutingHandler.java:52)
+	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:724)
+	at io.dropwizard.jetty.BiDiGzipHandler.handle(BiDiGzipHandler.java:67)
+	at org.eclipse.jetty.server.handler.RequestLogHandler.handle(RequestLogHandler.java:56)
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:169)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:531)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:352)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:281)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:760)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:678)
+	at java.lang.Thread.run(Thread.java:745)
+INFO   [11:10:53.328] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [11:10:53.331] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [11:10:53.470] [main] o.h.Version -  HHH000412: Hibernate Core {[WORKING]} 
+INFO   [11:10:53.472] [main] o.h.c.Environment -  HHH000206: hibernate.properties not found 
+INFO   [11:10:53.486] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [11:10:54.065] [main] o.h.a.c.Version -  HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+INFO   [11:10:56.757] [main] o.h.d.Dialect -  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+INFO   [11:10:57.165] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.util.Currency] overrides previous : org.hibernate.type.CurrencyType@13ef7fa1 
+INFO   [11:10:57.165] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Duration] overrides previous : org.hibernate.type.DurationType@23b1aa9 
+INFO   [11:10:57.165] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Instant] overrides previous : org.hibernate.type.InstantType@54489296 
+INFO   [11:10:57.165] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDate] overrides previous : org.hibernate.type.LocalDateType@4e8598d9 
+INFO   [11:10:57.165] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDateTime] overrides previous : org.hibernate.type.LocalDateTimeType@267ff4df 
+INFO   [11:10:57.165] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalTime] overrides previous : org.hibernate.type.LocalTimeType@7c4b5ceb 
+INFO   [11:10:57.166] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetDateTime] overrides previous : org.hibernate.type.OffsetDateTimeType@6c07add6 
+INFO   [11:10:57.166] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetTime] overrides previous : org.hibernate.type.OffsetTimeType@e26a3df 
+INFO   [11:10:57.166] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.ZonedDateTime] overrides previous : org.hibernate.type.ZonedDateTimeType@57a667c8 
+INFO   [11:10:58.286] [main] i.d.s.ServerFactory -  Starting Banking-api 
+INFO   [11:10:58.353] [main] o.e.j.s.SetUIDListener -  Opened application@3a70575{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [11:10:58.353] [main] o.e.j.s.SetUIDListener -  Opened admin@5d96d434{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [11:10:58.355] [main] o.e.j.s.Server -  jetty-9.4.z-SNAPSHOT; built: 2018-05-03T15:56:21.710Z; git: daa59876e6f384329b122929e70a80934569428c; jvm 1.8.0_101-b13 
+INFO   [11:10:58.576] [main] r.v.d.g.m.i.f.j.p.JerseyProviderInstaller -  providers = 
+
+    Dynamic features
+        (banking.oauth.OAuthDynamicFeature)
+ 
+INFO   [11:10:58.796] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /api/accounts/ (banking.accounts.api.controller.AccountsController)
+    POST    /api/accounts/ (banking.accounts.api.controller.AccountsController)
+    GET     /api/accounts/{ID} (banking.accounts.api.controller.AccountsController)
+    PUT     /api/accounts/{ID} (banking.accounts.api.controller.AccountsController)
+    GET     /api/customers/{customerId} (banking.customers.api.controller.CustomerController)
+    POST    /api/security (banking.oauth.api.controller.SecurityController)
+    GET     /api/transfers (banking.transactions.api.controller.BankTransferController)
+    POST    /api/transfers (banking.transactions.api.controller.BankTransferController)
+ 
+WARN   [11:10:58.797] [main] o.g.j.i.Errors -  The following warnings have been detected: WARNING: A HTTP GET method, public javax.ws.rs.core.Response banking.transactions.api.controller.BankTransferController.hola(banking.transactions.application.dto.RequestBankTransferDto) throws java.lang.Exception, should not consume any entity.
+ 
+INFO   [11:10:58.799] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6cb662e8{/,null,AVAILABLE} 
+INFO   [11:10:58.803] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:10:58.810] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@61bf405d{/,null,AVAILABLE} 
+INFO   [11:10:58.822] [main] o.e.j.s.AbstractConnector -  Started application@3a70575{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [11:10:58.828] [main] o.e.j.s.AbstractConnector -  Started admin@5d96d434{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [11:10:58.828] [main] o.e.j.s.Server -  Started @7054ms 

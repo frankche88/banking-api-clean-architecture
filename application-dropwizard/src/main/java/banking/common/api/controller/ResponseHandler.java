@@ -27,6 +27,12 @@ public class ResponseHandler {
 		return Response.ok().entity(responseDto.getResponse()).status(HttpStatus.CREATED_201).build();
     }
 	
+	
+	public Response getOkObjectResponse(Object message) {
+		
+		return Response.ok().entity(message).status(HttpStatus.OK_200).build();
+    }
+	
 	public Response getAppCustomErrorResponse(String errorMessages)
     {
 		logger.debug(errorMessages);
