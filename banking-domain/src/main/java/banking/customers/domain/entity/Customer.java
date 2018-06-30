@@ -9,8 +9,17 @@ public class Customer {
     private String firstName;
     private String lastName;
     private Set<BankAccount> bankAccounts;
+    private String documentNumber;
 
-    public Customer() {
+    public String getDocumentNumber() {
+		return documentNumber;
+	}
+
+	public void setDocumentNumber(String documentNumber) {
+		this.documentNumber = documentNumber;
+	}
+
+	public Customer() {
     }
 
     public String getFullName() {

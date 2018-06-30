@@ -6,6 +6,8 @@ import banking.customers.domain.entity.Customer;
 
 public interface CustomerRepository {
 
+	Customer findById(long id) throws Exception;
+	
 	List<Customer> findAllPaginated(int pageNumber, int pageSize);
 
 	long countAll();

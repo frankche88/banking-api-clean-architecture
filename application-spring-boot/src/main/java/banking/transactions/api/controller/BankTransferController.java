@@ -29,7 +29,7 @@ public class BankTransferController {
 		} catch(IllegalArgumentException ex) {
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
 		} catch(Exception ex) {
-			return this.responseHandler.getAppExceptionResponse(ex);
+			return this.responseHandler.getAppExceptionResponse();
 		}
 	}
 	
@@ -42,7 +42,7 @@ public class BankTransferController {
 		} catch(IllegalArgumentException ex) {
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
 		} catch(Exception ex) {
-			return this.responseHandler.getAppExceptionResponse(ex);
+			return this.responseHandler.getAppExceptionResponse();
 		}
 	}
 	

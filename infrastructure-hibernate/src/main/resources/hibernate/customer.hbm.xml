@@ -9,6 +9,7 @@
         </id>
         <property name="firstName" column="first_name"/>
         <property name="lastName" column="last_name"/>
+        <property name="documentNumber" column="document_number"/>
         
         <set name="bankAccounts" inverse="true" cascade="all">
             <key column="customer_id" not-null="true"/>
