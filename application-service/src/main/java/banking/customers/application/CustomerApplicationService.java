@@ -2,6 +2,8 @@ package banking.customers.application;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 import banking.common.application.Notification;
 import banking.customers.domain.entity.Customer;
@@ -13,7 +15,7 @@ public class CustomerApplicationService {
 	@Inject
 	private CustomerRepository customerRepository;
 
-	
+	@Transactional
     public Customer getCustomerById(long id) throws Exception {
         Notification notification = this.validation(id);
         if (notification.hasErrors()) {

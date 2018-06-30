@@ -3,6 +3,8 @@ package banking.common.api.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,7 @@ import banking.common.application.dto.ResponseOkCommandDto;
 
 @Component()
 public class ResponseHandler {
+	private Logger LOGGER = LoggerFactory.getLogger(ResponseHandler.class);
 	public ResponseEntity<Object> getOkCommandResponse(String message) {
 		ResponseDto responseDto = new ResponseDto();
 		ResponseOkCommandDto responseOkCommandDto = new ResponseOkCommandDto();
@@ -37,8 +40,9 @@ public class ResponseHandler {
         return new ResponseEntity<Object>(responseDto.getResponse(), HttpStatus.BAD_REQUEST);
     }
 	
-	public ResponseEntity<Object> getAppExceptionResponse()
+	public ResponseEntity<Object> getAppExceptionResponse(Exception ex)
     {
+		LOGGER.error("Error",ex);	
 		ResponseDto responseDto = new ResponseDto();
 		List<ErrorDto> errorsDto = new ArrayList<ErrorDto>();
         errorsDto.add(new ErrorDto("Server error"));

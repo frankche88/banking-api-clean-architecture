@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import banking.common.api.controller.ResponseHandler;
 import banking.customers.application.CustomerApplicationService;
+import banking.customers.application.dto.mapper.CustomerToCustomerDtoMapper;
 import banking.customers.domain.entity.Customer;
 
 @RestController
@@ -22,7 +23,11 @@ public class CustomerController {
 
 	@Autowired
 	ResponseHandler  responseHandler;        
-	@RequestMapping(method = RequestMethod.GET, path = "customer/{customerId}")
+	
+	@Autowired
+	CustomerToCustomerDtoMapper customerToCustomerDtoMapper;
+	
+	@RequestMapping(method = RequestMethod.GET, path = "{customerId}")
 	public ResponseEntity<Object> getCustomerById(@PathVariable("customerId") Long id) throws Exception {
 		try {
 			Customer  customer = customerApplicationService.getCustomerById(id);
@@ -30,11 +35,11 @@ public class CustomerController {
 //			customer.setId(1);
 //			customer.setFirstName("Felipe");
 //			customer.setLastName("Llancachagua");
-			return this.responseHandlerCustomer.getCustomer(customer);
+			return this.responseHandlerCustomer.getCustomer(customerToCustomerDtoMapper.mapper(customer));
 		} catch(IllegalArgumentException ex) {
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
 		} catch(Exception ex) {
-			return this.responseHandler.getAppExceptionResponse();
+			return this.responseHandler.getAppExceptionResponse(ex);
 		}
 	}    
 
