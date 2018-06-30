@@ -1,13 +1,25 @@
 package banking.customers.application.dto;
 
-import java.util.Set;
-
-import banking.accounts.application.dto.BankAccountDto;
-
 public class CustomerDto {
+	
+	private String documentNumber;
+
 	private String firstName;
+	
 	private String lastName;
-	private Set<BankAccountDto> bankAccountsDto;
+	
+	public CustomerDto() {
+		
+	}
+	
+	public CustomerDto(String documentNumber, String firstName, String lastName) {
+		super();
+		this.documentNumber = documentNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	//private Set<BankAccountDto> bankAccountsDto;
 
 	public String getFirstName() {
 		return firstName;
@@ -24,12 +36,12 @@ public class CustomerDto {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public Set<BankAccountDto> getBankAccountsDto() {
-		return bankAccountsDto;
+	
+	public String getDocumentNumber() {
+		return documentNumber;
 	}
 
-	public void setBankAccountsDto(Set<BankAccountDto> bankAccountsDto) {
-		this.bankAccountsDto = bankAccountsDto;
+	public void setDocumentNumber(String documentNumber) {
+		this.documentNumber = documentNumber;
 	}
 }

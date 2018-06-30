@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response;
 
 import banking.common.api.controller.ResponseHandler;
 import banking.customers.application.CustomerApplicationService;
+import banking.customers.application.dto.mapper.CustomerToCustomerDtoMapper;
 import banking.customers.domain.entity.Customer;
 import io.dropwizard.hibernate.UnitOfWork;
 
@@ -23,6 +24,9 @@ public class CustomerController {
 	@Inject
 	ResponseHandler  responseHandler;
 	
+	@Inject
+	CustomerToCustomerDtoMapper customerDtoMapper;
+	
 	@GET
 	@Path("{customerId}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -32,11 +36,7 @@ public class CustomerController {
 		try {
 			
 			Customer  customer = customerApplicationService.getCustomerById(id);
-			//Customer  customer = new Customer();//customerApplicationService.getCustomerById(customerId);
-//			customer.setId(1);
-//			customer.setFirstName("Felipe");
-//			customer.setLastName("Llancachagua");
-			return this.responseHandler.getOkObjectResponse(customer);
+			return this.responseHandler.getOkObjectResponse(customerDtoMapper.mapper(customer));
 			
 		} catch(IllegalArgumentException ex) {
 			
