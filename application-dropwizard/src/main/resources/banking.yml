@@ -33,6 +33,11 @@ database:
     hibernate.show_sql: true
     hibernate.generate_statistics: false
     hibernate.hbm2ddl.auto: validate # validates schema when service is started
+
+swagger:
+  resourcePackage: com.test.domain.resource
+  schemes:
+    - http
   
 # Logging settings.
 logging:

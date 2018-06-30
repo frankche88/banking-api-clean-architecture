@@ -2,6 +2,8 @@ package banking;
 
 import banking.application.hibernate.HbnBundle;
 import banking.application.hibernate.HbnModule;
+import banking.bundles.CorsBundle;
+import banking.bundles.SwitchableSwaggerBundle;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.migrations.MigrationsBundle;
@@ -32,6 +34,11 @@ public class BankingApplication extends Application<BankingConfiguration> {
 		});
 
 		final HbnBundle hibernate = new HbnBundle();
+		
+		bootstrap.addBundle(new SwitchableSwaggerBundle());
+        bootstrap.addBundle(new CorsBundle());
+		
+		
         // register hbn bundle before guice to make sure factory initialized before guice context start
         bootstrap.addBundle(hibernate);
         bootstrap.addBundle(GuiceBundle.builder()
