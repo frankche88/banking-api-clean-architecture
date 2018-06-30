@@ -24,14 +24,32 @@ public class CustomerHibernateRepository extends BaseHibernateRepository<Custome
 	
 	@Override
 	public Customer findById(long id) throws Exception {
-        Criteria criteria = getSession().createCriteria(Customer.class);
+		
+		
+		CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
+		
+		CriteriaQuery<Customer> criteriaQuery = criteriaBuilder.createQuery(Customer.class);
+		
+		Root<Customer> from = criteriaQuery.from(Customer.class);
+		
+		CriteriaQuery<Customer> select = criteriaQuery.select(from);
+		
+		Predicate condition = criteriaBuilder.equal(from.get("id"), id);
+		
+		
+		TypedQuery<Customer> typedQuery = getSession().createQuery(select.where(condition));
+		
+		return typedQuery.getSingleResult();
+		
+		
+        //Criteria criteria = getSession().createCriteria(Customer.class);
 
         //criteria.list();
         //criteria.add(Restrictions.eq("documentNumber", "10202366"));
-        criteria.add(Restrictions.eq("id", id));
+        //criteria.add(Restrictions.eq("id", id));
 
         //return (Customer)criteria.uniqueResult();
-        return (Customer)criteria.uniqueResult();
+        //return (Customer)criteria.uniqueResult();
 //		Customer  customer = new Customer();//customerApplicationService.getCustomerById(customerId);
 //		customer.setId(1);
 //		customer.setFirstName("Felipe");
