@@ -1,3 +1,11 @@
+delete from bank_account;
+delete from customer;
+INSERT INTO customer(customer_id, first_name, last_name, active) VALUES(1, 'Juan', 'Perez', 1);
+INSERT INTO customer(customer_id, first_name, last_name, active) VALUES(2, 'Julio', 'Morales', 1);
+
+
+
+
 INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-001', 1500, 0, 1);
 INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-002', 1800, 0, 1);
 INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-003', 1500, 0, 1);

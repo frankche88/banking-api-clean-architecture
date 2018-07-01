@@ -13,7 +13,7 @@ public class CustomerHibernateRepositoryTest extends JPAHibernateTest {
 	
 	CustomerHibernateRepository customerRepository = new CustomerHibernateRepository();
 	
-	//@Test
+	@Test
     public void testFindAllPaginated_success() {
 		
 		sessionFactory.getCurrentSession().beginTransaction();

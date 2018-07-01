@@ -38,7 +38,7 @@ public class JPAHibernateTest {
 
 				"org.h2.Driver");
 
-		configuration.setProperty("hibernate.connection.url", "jdbc:h2:mem:test;MODE=MYSQL;INIT=RUNSCRIPT FROM 'classpath:db/migration/V1_1__create_customer.sql'\\;RUNSCRIPT FROM 'classpath:db/migration/V1_2__create_bank_account.sql'");
+		configuration.setProperty("hibernate.connection.url", "jdbc:h2:mem:test;MODE=MYSQL;INIT=RUNSCRIPT FROM 'classpath:db/V1_1__create_customer.sql'\\;RUNSCRIPT FROM 'classpath:db/V1_2__create_bank_account.sql'");
 
 		configuration.setProperty("hibernate.hbm2ddl.auto", "validate");
 		
@@ -61,11 +61,11 @@ public class JPAHibernateTest {
 			@Override
 			public void execute(Connection connection) throws SQLException {
 				try {
-					File script = new File(getClass().getResource("/db/migration/V1_3__insert_customer.sql").getFile());
+					File script = new File(getClass().getResource("/db/V1_3__insert_customer.sql").getFile());
 					RunScript.execute(connection, new FileReader(script));
 
-					script = new File(getClass().getResource("/db/migration/V1_4__insert_bank_accounts.sql").getFile());
-					RunScript.execute(connection, new FileReader(script));
+//					script = new File(getClass().getResource("/db/V1_4__insert_bank_accounts.sql").getFile());
+//					RunScript.execute(connection, new FileReader(script));
 
 				} catch (FileNotFoundException e) {
 					throw new RuntimeException("could not initialize with script");
