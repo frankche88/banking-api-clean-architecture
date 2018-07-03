@@ -10,9 +10,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
-
 import banking.common.infrastructure.hibernate.repository.BaseHibernateRepository;
 import banking.customers.domain.entity.Customer;
 import banking.customers.domain.repository.CustomerRepository;
@@ -20,83 +17,74 @@ import banking.customers.domain.repository.CustomerRepository;
 @Named
 @Singleton
 public class CustomerHibernateRepository extends BaseHibernateRepository<Customer> implements CustomerRepository {
-	
-	
+
 	@Override
-	public Customer findById(long id) throws Exception {
-		
-		
+	public Customer findById(long id) {
+
 		CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
-		
+
 		CriteriaQuery<Customer> criteriaQuery = criteriaBuilder.createQuery(Customer.class);
-		
+
 		Root<Customer> from = criteriaQuery.from(Customer.class);
-		
+
 		CriteriaQuery<Customer> select = criteriaQuery.select(from);
-		
+
 		Predicate condition = criteriaBuilder.equal(from.get("id"), id);
-		
-		
+
 		TypedQuery<Customer> typedQuery = getSession().createQuery(select.where(condition));
-		
+
 		return typedQuery.getSingleResult();
-		
-		
-        //Criteria criteria = getSession().createCriteria(Customer.class);
-
-        //criteria.list();
-        //criteria.add(Restrictions.eq("documentNumber", "10202366"));
-        //criteria.add(Restrictions.eq("id", id));
-
-        //return (Customer)criteria.uniqueResult();
-        //return (Customer)criteria.uniqueResult();
-//		Customer  customer = new Customer();//customerApplicationService.getCustomerById(customerId);
-//		customer.setId(1);
-//		customer.setFirstName("Felipe");
-//		customer.setLastName("Llancachagua");
-//		customer.setDocumentNumber("10558980");
-//		return customer;
 	}
-	
-	
+
+	@Override
+	public Customer findByDni(String dni) {
+		CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
+
+		CriteriaQuery<Customer> criteriaQuery = criteriaBuilder.createQuery(Customer.class);
+
+		Root<Customer> from = criteriaQuery.from(Customer.class);
+
+		CriteriaQuery<Customer> select = criteriaQuery.select(from);
+
+		Predicate condition = criteriaBuilder.equal(from.get("documentNumber"), dni);
+
+		TypedQuery<Customer> typedQuery = getSession().createQuery(select.where(condition));
+
+		return typedQuery.getSingleResult();
+	}
+
 	@Override
 	public List<Customer> findAllPaginated(int pageNumber, int pageSize) {
-		
-		
+
 		CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
-		
-		
+
 		CriteriaQuery<Long> indexCriteria = criteriaBuilder.createQuery(Long.class);
-		
+
 		Root<Customer> fromIndex = indexCriteria.from(Customer.class);
-		
+
 		indexCriteria.multiselect(fromIndex.get("id"));
-		
+
 		TypedQuery<Long> indexQuery = getSession().createQuery(indexCriteria);
-		
+
 		indexQuery.setFirstResult((pageNumber - 1) * pageSize);
 		indexQuery.setMaxResults(pageSize);
-		
+
 		List<Long> indexPaged = indexQuery.getResultList();
-		
+
 		// paged result
 		CriteriaQuery<Customer> criteriaQuery = criteriaBuilder.createQuery(Customer.class);
-		
+
 		Root<Customer> from = criteriaQuery.from(Customer.class);
-		
+
 		CriteriaQuery<Customer> select = criteriaQuery.select(from);
-		
+
 		Predicate condition = from.get("id").in(indexPaged);
-		
-		
 
 		TypedQuery<Customer> typedQuery = getSession().createQuery(select.where(condition));
-
-		
 
 		return typedQuery.getResultList();
 	}
-	
+
 	@Override
 	public long countAll() {
 
@@ -111,11 +99,11 @@ public class CustomerHibernateRepository extends BaseHibernateRepository<Custome
 
 	private TypedQuery<Long> countAllQuery(CriteriaBuilder criteriaBuilder) {
 		CriteriaQuery<Long> countQuery = criteriaBuilder.createQuery(Long.class);
-		
+
 		countQuery.select(criteriaBuilder.count(countQuery.from(Customer.class)));
-		
+
 		TypedQuery<Long> query = getSession().createQuery(countQuery);
 		return query;
-	}	
+	}
 
 }

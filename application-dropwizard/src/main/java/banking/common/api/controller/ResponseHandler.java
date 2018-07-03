@@ -62,4 +62,16 @@ public class ResponseHandler {
         //return new ResponseEntity<Object>(responseDto.getResponse(), HttpStatus.INTERNAL_SERVER_ERROR);
         return Response.ok().entity(responseDto.getResponse()).status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
     }
+
+
+	public Response getNotFoundObjectResponse(String message) {
+		ResponseDto responseDto = new ResponseDto();
+		List<ErrorDto> errorsDto = new ArrayList<ErrorDto>();
+        errorsDto.add(new ErrorDto(message));
+        ResponseErrorDto responseErrorDto = new ResponseErrorDto(errorsDto);
+        responseErrorDto.setHttpStatus(HttpStatus.NOT_FOUND_404);
+        responseDto.setResponse(responseErrorDto);
+        //return new ResponseEntity<Object>(responseDto.getResponse(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return Response.ok().entity(responseDto.getResponse()).status(HttpStatus.NOT_FOUND_404).build();
+	}
 }
