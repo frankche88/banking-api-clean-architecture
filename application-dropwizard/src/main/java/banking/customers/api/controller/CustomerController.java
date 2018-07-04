@@ -89,7 +89,7 @@ public class CustomerController {
 	}
 	
 	@GET
-	@Path("{dni}")
+	@Path("/dni/{dni}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
 	public Response getCustomerByDni(@PathParam("dni") String id) throws Exception {

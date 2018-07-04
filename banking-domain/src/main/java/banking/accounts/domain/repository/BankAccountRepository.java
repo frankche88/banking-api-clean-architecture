@@ -15,5 +15,7 @@ public interface BankAccountRepository {
 	long countBankAccount();
 	
 	List<BankAccount> findAllPaginated(int pageNumber, int pageSize);
+
+	BankAccount findById(long id);
 	
 }

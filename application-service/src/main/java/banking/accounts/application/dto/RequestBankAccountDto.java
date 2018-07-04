@@ -14,8 +14,11 @@ public class RequestBankAccountDto extends RequestBaseDto {
 	private String number;
 	private BigDecimal balance;
 	private boolean isLocked;
-	
 	private long customerId;
+	
+	
+	
+	
 	
 	private RequestBodyType requestBodyType;
 	

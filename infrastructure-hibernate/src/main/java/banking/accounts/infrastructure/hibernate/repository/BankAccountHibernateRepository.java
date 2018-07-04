@@ -25,36 +25,33 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 		implements BankAccountRepository {
 
 	@Override
-	public BankAccount findByNumber(String accountNumber) throws Exception {
-
-		TypedQuery<BankAccount> query = findByNumberQuery(accountNumber);
+	public BankAccount findById(long id) {
+		
+		TypedQuery<BankAccount> query = findByField("id", id);
 
 		return query.getSingleResult();
+	}
 
-		// Criteria criteria = getSession().createCriteria(BankAccount.class);
-		// criteria.add(Restrictions.eq("number", accountNumber));
-		// return (BankAccount) criteria.uniqueResult();
+	@Override
+	public BankAccount findByNumber(String accountNumber) throws Exception {
+
+		TypedQuery<BankAccount> query = findByField("number", accountNumber);
+
+		return query.getSingleResult();
 	}
 
 	@Override
 	public BankAccount findByNumberLocked(String accountNumber) throws Exception {
 
-		TypedQuery<BankAccount> query = findByNumberQuery(accountNumber);
+		TypedQuery<BankAccount> query = findByField("number", accountNumber);
 
 		query.setLockMode(LockModeType.PESSIMISTIC_WRITE);
 
 		return query.getSingleResult();
 
-		// List<BankAccount> results = query.getResultList();
-
-		// Criteria criteria = getSession().createCriteria(BankAccount.class);
-		// criteria.add(Restrictions.eq("number", accountNumber));
-		// criteria.setLockMode(LockMode.PESSIMISTIC_WRITE);
-		// return (BankAccount) criteria.uniqueResult();
-
 	}
 
-	private TypedQuery<BankAccount> findByNumberQuery(String accountNumber) {
+	private TypedQuery<BankAccount> findByField(String field, Object valueField) {
 
 		CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
 
@@ -62,7 +59,7 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 
 		Root<BankAccount> from = criteriaQuery.from(BankAccount.class);
 
-		Predicate condition = criteriaBuilder.equal(from.get("number"), accountNumber);
+		Predicate condition = criteriaBuilder.equal(from.get(field), valueField);
 
 		criteriaQuery.select(from).where(condition);
 
