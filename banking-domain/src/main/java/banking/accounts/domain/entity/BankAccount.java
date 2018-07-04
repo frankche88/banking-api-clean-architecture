@@ -13,9 +13,9 @@ import banking.common.application.Notification;
 import banking.customers.domain.entity.Customer;
 
 public class BankAccount {
-	private long id;
+	private long id = 0;
     private String number;
-    private BigDecimal balance;
+    private BigDecimal balance = null;
     private boolean isLocked;
     private Customer customer;
 

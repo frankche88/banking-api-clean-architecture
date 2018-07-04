@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import banking.accounts.application.BankAccountService;
-import banking.accounts.application.dto.BankAccountDto;
+import banking.accounts.application.dto.RequestBankAccountDto;
 import banking.accounts.application.dto.ResponseBankAccountDto;
 import banking.accounts.application.dto.mapper.BankAccountDtoMapper;
 import banking.accounts.domain.entity.BankAccount;
@@ -22,49 +22,45 @@ import banking.common.api.controller.ResponseHandler;
 import banking.common.application.dto.PaggedResponse;
 import io.dropwizard.hibernate.UnitOfWork;
 
-
-
 @Path("/api/accounts/")
 public class AccountsController {
-	
+
 	@Inject
 	BankAccountService bankAccountService;
-	
-	
+
 	@Inject
-	ResponseHandler  responseHandler;
-	
+	ResponseHandler responseHandler;
+
 	@Inject
 	BankAccountDtoMapper bankAccountDtoMapper;
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
-	public Response listAll(
-			@DefaultValue("1") @QueryParam("pageNumber")int pageNumber, 
-			@DefaultValue("10") @QueryParam("pageSize")int pageSize) {
+	public Response listAll(@DefaultValue("1") @QueryParam("pageNumber") int pageNumber,
+			@DefaultValue("10") @QueryParam("pageSize") int pageSize) {
 		try {
-			
-			PaggedResponse<ResponseBankAccountDto>  response = bankAccountService.findAllPaged(pageNumber, pageSize);
-			
-			if(response == null ) {
-				
+
+			PaggedResponse<ResponseBankAccountDto> response = bankAccountService.findAllPaged(pageNumber, pageSize);
+
+			if (response == null) {
+
 				return this.responseHandler.getNotFoundObjectResponse("Bank Accounts not found");
-				
+
 			}
-			
+
 			return this.responseHandler.getOkObjectResponse(response);
-			
-		} catch(IllegalArgumentException ex) {
-			
+
+		} catch (IllegalArgumentException ex) {
+
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
-		
-		} catch(Throwable ex) {
-		
+
+		} catch (Throwable ex) {
+
 			return this.responseHandler.getAppExceptionResponse(ex);
 		}
 	}
-	
+
 	@GET
 	@Path("{bankAccountId}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -89,26 +85,55 @@ public class AccountsController {
 			return this.responseHandler.getAppExceptionResponse(ex);
 		}
 	}
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
-	public ResponseBankAccountDto addBankAccount(BankAccountDto bankAccountDto) {
-		return null;
+	public Response addBankAccount(RequestBankAccountDto bankAccountDto) {
+		try {
+
+			bankAccountService.save(bankAccountDto);
+
+			return this.responseHandler.getOkObjectResponse("Bank account saved: " + bankAccountDto.getId());
+
+		} catch (IllegalArgumentException ex) {
+
+			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
+
+		} catch (Throwable ex) {
+
+			return this.responseHandler.getAppExceptionResponse(ex);
+		}
 	}
-	
+
 	@PUT
 	@Path("{ID}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
-	public ResponseBankAccountDto updateBankAccount(@PathParam("ID") long id, BankAccountDto bankAccountDto) {
-		return null;
-	}
-	
-	
-	
+	public Response updateBankAccount(@PathParam("ID") long id, RequestBankAccountDto bankAccountDto) {
 
-	
+		try {
+
+			BankAccount customer = bankAccountService.update(bankAccountDto);
+
+			if (customer == null) {
+
+				return this.responseHandler.getNotFoundObjectResponse("Bank account not found");
+
+			}
+
+			return this.responseHandler.getOkObjectResponse("Bank account updated: " + customer.getId());
+
+		} catch (IllegalArgumentException ex) {
+
+			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
+
+		} catch (Throwable ex) {
+
+			return this.responseHandler.getAppExceptionResponse(ex);
+		}
+	}
+
 }

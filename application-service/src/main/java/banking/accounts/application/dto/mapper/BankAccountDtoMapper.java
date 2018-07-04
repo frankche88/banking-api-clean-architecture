@@ -6,8 +6,10 @@ import java.util.List;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import banking.accounts.application.dto.RequestBankAccountDto;
 import banking.accounts.application.dto.ResponseBankAccountDto;
 import banking.accounts.domain.entity.BankAccount;
+import banking.customers.domain.entity.Customer;
 
 @Named
 @Singleton
@@ -45,6 +47,31 @@ public class BankAccountDtoMapper {
 		} 
 		
 		return dto;
+	}
+
+	public BankAccount reverseMapper(RequestBankAccountDto dto) {
+		
+		Customer customer = new Customer();
+		
+		customer.setId(dto.getCustomerId());
+		
+		BankAccount bankAccount = new BankAccount();
+		
+		bankAccount.setIsLocked(dto.isLocked());
+		
+		bankAccount.setCustomer(customer);
+		
+		bankAccount.setNumber(dto.getNumber());
+		
+		return bankAccount;
+	}
+
+	// el unico cambio que se puede hacer por este medio es el estado
+	public BankAccount merge(BankAccount bankAccount, RequestBankAccountDto dto) {
+		
+		bankAccount.setIsLocked(dto.isLocked());
+		
+		return bankAccount;
 	}
 
 }

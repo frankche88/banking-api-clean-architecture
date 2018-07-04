@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
+import banking.accounts.application.dto.RequestBankAccountDto;
 import banking.accounts.application.dto.ResponseBankAccountDto;
 import banking.accounts.application.dto.mapper.BankAccountDtoMapper;
 import banking.accounts.domain.entity.BankAccount;
@@ -54,6 +55,57 @@ public class BankAccountService {
 
 		return response;
 	}
+
+
+	@Transactional
+	public void save(RequestBankAccountDto dto) {
+		Notification notification = this.validation(dto);
+
+		if (notification.hasErrors()) {
+			throw new IllegalArgumentException(notification.errorMessage());
+		}
+
+		BankAccount bankAccount = bankAccountDtoMapper.reverseMapper(dto);
+
+		this.bankAccountRepository.save(bankAccount);
+
+		dto.setId(bankAccount.getId());
+		
+	}
+	
+	@Transactional
+	public BankAccount update(RequestBankAccountDto dto) {
+		Notification notification = this.validation(dto);
+
+		if (notification.hasErrors()) {
+			throw new IllegalArgumentException(notification.errorMessage());
+		}
+		
+		BankAccount bankAccount = bankAccountRepository.findById(dto.getId());
+		
+		if(bankAccount == null) {
+			return null;
+		}
+
+		bankAccount = bankAccountDtoMapper.merge(bankAccount, dto);
+
+		this.bankAccountRepository.update(bankAccount);
+		
+		return bankAccount;
+		
+		
+	}
+	
+
+	private Notification validation(RequestBankAccountDto dto) {
+		Notification notification = new Notification();
+		if ( dto.getCustomerId()  <= 0) {
+			notification.addError("Customer id must exist.");
+		}
+		return notification;
+	}
+
+
 
 	private Notification validation(int pageNumber, int pageSize) {
 		Notification notification = new Notification();

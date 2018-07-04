@@ -115,7 +115,6 @@ public class CustomerController {
 	}
 	
 	@POST
-	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
 	public Response saveCustomer(CustomerDto customer) throws Exception {
@@ -152,7 +151,7 @@ public class CustomerController {
 				
 			}
 			
-			return this.responseHandler.getOkObjectResponse("Customer saved: " + customer.getId());
+			return this.responseHandler.getOkObjectResponse("Customer updated: " + customer.getId());
 			
 		} catch(IllegalArgumentException ex) {
 			

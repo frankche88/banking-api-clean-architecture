@@ -10,10 +10,15 @@ import banking.common.application.enumeration.RequestBodyType;
 
 @JsonDeserialize(using = RequestBankAccountDtoDeserializer.class)
 public class RequestBankAccountDto extends RequestBaseDto {
+	
 	private long id;
+	
 	private String number;
+	
 	private BigDecimal balance;
-	private boolean isLocked;
+	
+	private boolean isLocked = false;
+	
 	private long customerId;
 	
 	
@@ -60,6 +65,10 @@ public class RequestBankAccountDto extends RequestBaseDto {
 
 	public long getCustomerId() {
 		return customerId;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	
