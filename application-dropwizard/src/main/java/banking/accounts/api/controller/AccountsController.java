@@ -86,6 +86,28 @@ public class AccountsController {
 		}
 	}
 
+	@GET
+	@Path("/newNumber")
+	@Produces(MediaType.APPLICATION_JSON)
+	@UnitOfWork
+	public Response newNumber() {
+		try {
+
+			BankAccount bankAccount = new BankAccount();
+
+	
+			return this.responseHandler.getOkObjectResponse("{\"accountNumber\": \"" + bankAccount.generateNumber() + "\"}");
+
+		} catch (IllegalArgumentException ex) {
+
+			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
+
+		} catch (Throwable ex) {
+
+			return this.responseHandler.getAppExceptionResponse(ex);
+		}
+	}
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

@@ -26,7 +26,7 @@ public class BankTransferController {
 	ResponseHandler responseHandler;
 
 	@POST
-	@Path("/transfers")
+	@Path("/bankTransfers")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork

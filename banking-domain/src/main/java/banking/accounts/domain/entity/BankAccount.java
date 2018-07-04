@@ -8,6 +8,7 @@ import static banking.common.application.Messages.BALANCE_NULL;
 import static banking.common.application.Messages.WITHDRAW_THE_AMOUNT_GREATER_THAN_BALANCE;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import banking.common.application.Notification;
 import banking.customers.domain.entity.Customer;
@@ -52,6 +53,10 @@ public class BankAccount {
             throw new IllegalArgumentException(notification.errorMessage());
         }
         this.balance = this.balance.add(amount);
+    }
+    
+    public String generateNumber() {
+    	return UUID.randomUUID().toString();
     }
     
     public Notification withdrawValidation(BigDecimal amount) {
