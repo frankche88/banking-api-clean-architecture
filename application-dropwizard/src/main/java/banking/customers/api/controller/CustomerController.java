@@ -19,8 +19,10 @@ import banking.customers.application.dto.CustomerDto;
 import banking.customers.application.dto.mapper.CustomerToCustomerDtoMapper;
 import banking.customers.domain.entity.Customer;
 import io.dropwizard.hibernate.UnitOfWork;
+import io.swagger.annotations.Api;
 
 @Path("/api/customers/")
+@Api(value = "/api/customers/")
 public class CustomerController {
 	
 	@Inject

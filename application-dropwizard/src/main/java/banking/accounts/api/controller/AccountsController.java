@@ -21,8 +21,11 @@ import banking.accounts.domain.entity.BankAccount;
 import banking.common.api.controller.ResponseHandler;
 import banking.common.application.dto.PaggedResponse;
 import io.dropwizard.hibernate.UnitOfWork;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Path("/api/bankAccounts/")
+@Api(value = "/api/bankAccounts")
 public class AccountsController {
 
 	@Inject
@@ -37,6 +40,10 @@ public class AccountsController {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+	@ApiOperation(value = "List pagged accounts",
+		httpMethod = "GET",
+	    response = ResponseBankAccountDto.class,
+	    responseContainer = "List")
 	public Response listAll(@DefaultValue("1") @QueryParam("pageNumber") int pageNumber,
 			@DefaultValue("10") @QueryParam("pageSize") int pageSize) {
 		try {
@@ -65,6 +72,9 @@ public class AccountsController {
 	@Path("{bankAccountId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+	@ApiOperation(value = "find accounts by ID",
+		httpMethod = "GET",
+	    response = ResponseBankAccountDto.class)
 	public Response findById(@PathParam("bankAccountId") long id) {
 		try {
 
@@ -90,6 +100,8 @@ public class AccountsController {
 	@Path("/newNumber")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+	@ApiOperation(value = "generate accounts number",
+	httpMethod = "GET")
 	public Response newNumber() {
 		try {
 
