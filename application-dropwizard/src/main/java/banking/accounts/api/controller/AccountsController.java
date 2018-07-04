@@ -22,7 +22,7 @@ import banking.common.api.controller.ResponseHandler;
 import banking.common.application.dto.PaggedResponse;
 import io.dropwizard.hibernate.UnitOfWork;
 
-@Path("/api/accounts/")
+@Path("/api/bankAccounts/")
 public class AccountsController {
 
 	@Inject
