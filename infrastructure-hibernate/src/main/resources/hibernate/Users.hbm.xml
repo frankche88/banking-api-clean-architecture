@@ -7,6 +7,9 @@
             <column name="username" length="45" />
             <generator class="assigned" />
         </id>
+        <property name="customerId" type="long">
+            <column name=customer_id not-null="true" />
+        </property>
         <property name="password" type="string">
             <column name="password" length="60" not-null="true" />
         </property>
