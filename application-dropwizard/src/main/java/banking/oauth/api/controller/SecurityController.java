@@ -30,7 +30,7 @@ public class SecurityController {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
-	public Response authenticateOATH(@FormParam("grant_type") String grantType, @FormParam("password") String password,
+	public Response authenticateOAUTH(@FormParam("grant_type") String grantType, @FormParam("password") String password,
 			@FormParam("username") String username) throws Exception {
 
 		try {

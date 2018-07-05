@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="banking.security.domain.entity.UserRole" table="user_roles">
-        <id name="userRoleId" type="java.lang.Integer">
+        <id name="userRoleId" type="java.lang.Long">
             <column name="user_role_id" />
             <generator class="identity" />
         </id>

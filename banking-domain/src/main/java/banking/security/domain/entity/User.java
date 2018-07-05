@@ -51,10 +51,17 @@ public class User {
 
 		Key secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
 		
-		// todo: add all claims
+		String role = "ROLE_USER";
+		
+		if(userRole != null && userRole.size() >  0) {
+			role = userRole.iterator().next().getRole();
+		}
 		
 		String accessToken = Jwts.builder()
 				  .setSubject(username)
+				  .claim("customerId", customerId)
+				  .claim("userName", username)
+				  .claim("role", role)
 				  .signWith(SignatureAlgorithm.HS512, secretKey)
 				  .compact();
 		
@@ -77,7 +84,7 @@ public class User {
 	}
 	public void setPassword(String password) {
 		
-		this.password = BCrypt.hashpw(password, BCrypt.gensalt(15));
+		this.password = password;
 	}
 	public boolean isEnabled() {
 		return enabled;
@@ -99,8 +106,6 @@ public class User {
 	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
 	}
-	
-	
 	
 
 }

@@ -1,11 +1,5 @@
-apply plugin: 'application'
 apply plugin: 'java'
 apply plugin: 'maven'
-
-mainClassName = 'banking.BankingApplication'
-
-
-description = """banking-api-clean-architecture"""
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

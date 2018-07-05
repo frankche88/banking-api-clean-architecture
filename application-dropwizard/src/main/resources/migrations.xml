@@ -51,7 +51,7 @@
             <column name="locked" type="BIT">
                 <constraints nullable="false"/>
             </column>
-            <column name="customer_id" type="varchar(50)">
+            <column name="customer_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -79,6 +79,9 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="password" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="enabled" type="BIT">
@@ -114,6 +117,7 @@
 	            tableName="users">
 	        <column name="username" value="admin"/>
 	        <column name="password" value="$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y"/>
+	        <column name="customer_id" value="0"/>
 	        <column name="enabled" value="true"/>
 	    </insert>
 	    
@@ -121,6 +125,7 @@
 	            tableName="users">
 	        <column name="username" value="client1"/>
 	        <column name="password" value="$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y"/>
+	        <column name="customer_id" value="2"/>
 	        <column name="enabled" value="true"/>
 	    </insert>
 	    
@@ -137,6 +142,17 @@
 	    </insert>
 	    
 	</changeSet>
+	
+	<changeSet author="liquibase-docs" id="update-password">
+    <update 
+            tableName="users">
+        <column name="password" value="$2a$15$RtgNY01pE2DtoehsTCr3j.oCea6x.GMIIKwDVMGi/7mMECSLYF0fC"/>
+        <where>username in ('admin', 'client1') </where>
+    </update>
+</changeSet>
+	
+	
+	
 	
 	    
     

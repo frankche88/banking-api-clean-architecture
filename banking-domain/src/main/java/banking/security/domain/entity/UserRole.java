@@ -2,7 +2,7 @@ package banking.security.domain.entity;
 
 public class UserRole {
 	
-	private Integer userRoleId;
+	private Long userRoleId;
 	private User user;
 	private String role;
 	
@@ -16,10 +16,10 @@ public class UserRole {
 	}
 	
 	
-	public Integer getUserRoleId() {
+	public Long getUserRoleId() {
 		return userRoleId;
 	}
-	public void setUserRoleId(Integer userRoleId) {
+	public void setUserRoleId(Long userRoleId) {
 		this.userRoleId = userRoleId;
 	}
 	public User getUser() {
