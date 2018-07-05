@@ -16,7 +16,8 @@ public class User {
 	
 	private String username;
 	private String password;
-	private boolean enabled;
+	private boolean enabled = true;
+	private long customerId = 0;
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 	
 	public User() {
@@ -60,6 +61,10 @@ public class User {
 		return accessToken;
 	}
 	
+	public void addUserRole(UserRole role) {
+		this.userRole.add(role);
+	}
+	
 	
 	public String getUsername() {
 		return username;
@@ -85,6 +90,14 @@ public class User {
 	}
 	public void setUserRole(Set<UserRole> userRole) {
 		this.userRole = userRole;
+	}
+
+	public long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
 	}
 	
 	

@@ -15,12 +15,17 @@ import banking.customers.application.dto.CustomerDto;
 import banking.customers.application.dto.mapper.CustomerToCustomerDtoMapper;
 import banking.customers.domain.entity.Customer;
 import banking.customers.domain.repository.CustomerRepository;
+import banking.security.domain.entity.User;
+import banking.security.domain.repository.UserRepository;
 
 @Named
 public class CustomerApplicationService {
 
 	@Inject
 	private CustomerRepository customerRepository;
+	
+	@Inject
+	private UserRepository userRepository;
 
 	@Inject
 	CustomerToCustomerDtoMapper customerDtoMapper;
@@ -76,10 +81,14 @@ public class CustomerApplicationService {
 		}
 
 		Customer customer = customerDtoMapper.reverseMapper(dto);
-
-		// todo: save usuario
+		
+		User user = customerDtoMapper.userMapper(dto);
 
 		this.customerRepository.save(customer);
+
+		user.setCustomerId(customer.getId());
+
+		userRepository.save(user);
 
 		dto.setId(customer.getId());
 

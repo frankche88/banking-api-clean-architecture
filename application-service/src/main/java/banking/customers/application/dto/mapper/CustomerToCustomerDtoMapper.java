@@ -8,6 +8,8 @@ import javax.inject.Singleton;
 
 import banking.customers.application.dto.CustomerDto;
 import banking.customers.domain.entity.Customer;
+import banking.security.domain.entity.User;
+import banking.security.domain.entity.UserRole;
 
 @Named
 @Singleton
@@ -69,6 +71,20 @@ public class CustomerToCustomerDtoMapper {
 		}
 
 		return customer;
+	}
+
+	public User userMapper(CustomerDto dto) {
+		String username = dto.getPassword();
+		String password = dto.getUserName();
+		
+		User user = new User(username, password, true);
+		
+		UserRole role = new UserRole(user, "ROLE_USER");
+		
+		user.addUserRole(role);
+		
+		
+		return user;
 	}
 
 }
