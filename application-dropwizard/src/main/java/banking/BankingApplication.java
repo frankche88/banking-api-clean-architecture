@@ -1,9 +1,9 @@
 package banking;
 
-import banking.application.hibernate.HbnBundle;
-import banking.application.hibernate.HbnModule;
 import banking.bundles.CorsBundle;
+import banking.bundles.HbnBundle;
 import banking.bundles.SwitchableSwaggerBundle;
+import banking.guice.module.HbnModule;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.migrations.MigrationsBundle;

@@ -1,7 +1,5 @@
 package banking.oauth;
 
-
-
 import java.security.Key;
 import java.util.Base64;
 import java.util.Optional;
@@ -13,6 +11,7 @@ import javax.ws.rs.ext.Provider;
 
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
+import banking.security.application.UserApplicationService;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.AuthenticationException;
@@ -27,60 +26,64 @@ import io.jsonwebtoken.SignatureException;
 
 @Provider
 public class OAuthDynamicFeature extends AuthDynamicFeature {
+	
+	private static final String JWt_ENCODED_KEY = UserApplicationService.JWt_ENCODED_KEY;
 
-    @Inject
-    public OAuthDynamicFeature(OAuthAuthenticator authenticator, 
-                                UserAuthorizer authorizer, 
-                                Environment environment) {
-        super(new OAuthCredentialAuthFilter.Builder<User>()
-                .setAuthenticator(authenticator)
-                .setAuthorizer(authorizer)
-                .setPrefix("Bearer")
-                .buildAuthFilter());
-        environment.jersey().register(RolesAllowedDynamicFeature.class);
-        environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
-    }
+	@Inject
+	public OAuthDynamicFeature(OAuthAuthenticator authenticator, UserAuthorizer authorizer, Environment environment) {
+		super(new OAuthCredentialAuthFilter.Builder<UserDto>().setAuthenticator(authenticator).setAuthorizer(authorizer)
+				.setPrefix("Bearer").buildAuthFilter());
+		environment.jersey().register(RolesAllowedDynamicFeature.class);
+		environment.jersey().register(new AuthValueFactoryProvider.Binder<>(UserDto.class));
+	}
 
-    // classes below may be external (internal for simplicity)
+	// classes below may be external (internal for simplicity)
 
 	@Singleton
-	public static class OAuthAuthenticator implements Authenticator<String, User> {
+	public static class OAuthAuthenticator implements Authenticator<String, UserDto> {
 
 		@Override
-		public Optional<User> authenticate(String credentials) throws AuthenticationException{
+		public Optional<UserDto> authenticate(String credentials) throws AuthenticationException {
 			// buscar usuario en BD
 			try {
-			
-				// get base64 encoded version of the key
-				String encodedKey = "k8zgjphoSZl4aTtNKiOXMQ==";
-				
+
 				// decode the base64 encoded string
-				byte[] decodedKey = Base64.getDecoder().decode(encodedKey);
+				byte[] decodedKey = Base64.getDecoder().decode(JWt_ENCODED_KEY);
 				// rebuild key using SecretKeySpec
 				Key secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
-			
-			
-				System.out.println("OAuthDynamicFeature.OAuthAuthenticator.authenticate()" + credentials);
+
 				Jws<Claims> jwsClaims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(credentials);
-				
+
 				String username = jwsClaims.getBody().getSubject();
 
-			
-			return Optional.of(username != null ? new User(username) : null);
-			
+				String role = (String) jwsClaims.getBody().get("role");
+
+				UserDto user = new UserDto(username);
+
+				user.addRole(role);
+
+				return Optional.of(username != null ? new UserDto(username) : null);
+
 			} catch (SignatureException e) {
 
-			    throw new AuthenticationException("acceso negado");
+				throw new AuthenticationException("Not autenticate");
 			}
 		}
 	}
 
-    @Singleton
-    public static class UserAuthorizer implements Authorizer<User> {
-        @Override
-        public boolean authorize(User user, String role) {
-        	System.out.println("OAuthDynamicFeature.UserAuthorizer.authorize() role: " + role);
-            return user.getName().equals("good-guy") && role.equals("ADMIN");
-        }
-    }   
+	@Singleton
+	public static class UserAuthorizer implements Authorizer<UserDto> {
+		@Override
+		public boolean authorize(UserDto user, String role) {
+			
+			if(user == null) {
+				
+				return false;
+			}
+			
+			user.getRoles().contains(role);
+			
+			return user.getRoles().contains(role);
+		}
+	}
 }

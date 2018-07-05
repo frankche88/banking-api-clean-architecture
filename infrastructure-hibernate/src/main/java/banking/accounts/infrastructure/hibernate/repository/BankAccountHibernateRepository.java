@@ -17,6 +17,7 @@ import javax.persistence.criteria.Root;
 
 import banking.accounts.domain.entity.BankAccount;
 import banking.accounts.domain.repository.BankAccountRepository;
+import banking.common.application.EntityNotFoundResultException;
 import banking.common.infrastructure.hibernate.repository.BaseHibernateRepository;
 
 @Named
@@ -26,32 +27,53 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 
 	@Override
 	public BankAccount findById(long id) {
-		
-		TypedQuery<BankAccount> query = findByField("id", id);
 
-		return query.getSingleResult();
+		try {
+
+			TypedQuery<BankAccount> query = findByField("id", id);
+
+			return query.getSingleResult();
+
+		} catch (javax.persistence.NoResultException e) {
+
+			throw new EntityNotFoundResultException(e.getMessage(), e);
+		}
 	}
 
 	@Override
-	public BankAccount findByNumber(String accountNumber) throws Exception {
+	public BankAccount findByNumber(String accountNumber) {
 
-		TypedQuery<BankAccount> query = findByField("number", accountNumber);
+		try {
 
-		return query.getSingleResult();
+			TypedQuery<BankAccount> query = findByField("number", accountNumber);
+
+			return query.getSingleResult();
+
+		} catch (javax.persistence.NoResultException e) {
+
+			throw new EntityNotFoundResultException(e.getMessage(), e);
+		}
 	}
 
 	@Override
 	public BankAccount findByNumberLocked(String accountNumber) throws Exception {
 
-		TypedQuery<BankAccount> query = findByField("number", accountNumber);
-
-		query.setLockMode(LockModeType.PESSIMISTIC_WRITE);
-
-		return query.getSingleResult();
+		try {
+			TypedQuery<BankAccount> query = findByField("number", accountNumber);
+	
+			query.setLockMode(LockModeType.PESSIMISTIC_WRITE);
+	
+			return query.getSingleResult();
+			
+		} catch (javax.persistence.NoResultException e) {
+			
+			throw new EntityNotFoundResultException(e.getMessage(), e);
+		}
 
 	}
 
 	private TypedQuery<BankAccount> findByField(String field, Object valueField) {
+		
 
 		CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
 
@@ -64,8 +86,9 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 		criteriaQuery.select(from).where(condition);
 
 		TypedQuery<BankAccount> query = getSession().createQuery(criteriaQuery);
-		
+
 		return query;
+
 	}
 
 	public void save(BankAccount bankAccount) {
@@ -86,9 +109,9 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 
 	private TypedQuery<Long> countAllQuery(CriteriaBuilder criteriaBuilder) {
 		CriteriaQuery<Long> countQuery = criteriaBuilder.createQuery(Long.class);
-		
+
 		countQuery.select(criteriaBuilder.count(countQuery.from(BankAccount.class)));
-		
+
 		TypedQuery<Long> query = getSession().createQuery(countQuery);
 		return query;
 	}
@@ -96,38 +119,39 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 	@Override
 	public List<BankAccount> findAllPaginated(int pageNumber, int pageSize) {
 		
-		CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
-		
-		
-		CriteriaQuery<Long> indexCriteria = criteriaBuilder.createQuery(Long.class);
-		
-		Root<BankAccount> fromIndex = indexCriteria.from(BankAccount.class);
-		
-		indexCriteria.multiselect(fromIndex.get("id"));
-		
-		TypedQuery<Long> indexQuery = getSession().createQuery(indexCriteria);
-		
-		indexQuery.setFirstResult((pageNumber - 1) * pageSize);
-		indexQuery.setMaxResults(pageSize);
-		
-		List<Long> indexPaged = indexQuery.getResultList();
-		
-		// paged result
-		CriteriaQuery<BankAccount> criteriaQuery = criteriaBuilder.createQuery(BankAccount.class);
-		
-		Root<BankAccount> from = criteriaQuery.from(BankAccount.class);
-		
-		CriteriaQuery<BankAccount> select = criteriaQuery.select(from);
-		
-		Predicate condition = from.get("id").in(indexPaged);
-		
-		
+		try {
 
-		TypedQuery<BankAccount> typedQuery = getSession().createQuery(select.where(condition));
-
-		
-
-		return typedQuery.getResultList();
+			CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
+	
+			CriteriaQuery<Long> indexCriteria = criteriaBuilder.createQuery(Long.class);
+	
+			Root<BankAccount> fromIndex = indexCriteria.from(BankAccount.class);
+	
+			indexCriteria.multiselect(fromIndex.get("id"));
+	
+			TypedQuery<Long> indexQuery = getSession().createQuery(indexCriteria);
+	
+			indexQuery.setFirstResult((pageNumber - 1) * pageSize);
+			indexQuery.setMaxResults(pageSize);
+	
+			List<Long> indexPaged = indexQuery.getResultList();
+	
+			// paged result
+			CriteriaQuery<BankAccount> criteriaQuery = criteriaBuilder.createQuery(BankAccount.class);
+	
+			Root<BankAccount> from = criteriaQuery.from(BankAccount.class);
+	
+			CriteriaQuery<BankAccount> select = criteriaQuery.select(from);
+	
+			Predicate condition = from.get("id").in(indexPaged);
+	
+			TypedQuery<BankAccount> typedQuery = getSession().createQuery(select.where(condition));
+	
+			return typedQuery.getResultList();
+		} catch (javax.persistence.NoResultException e) {
+			
+			throw new EntityNotFoundResultException(e.getMessage(), e);
+		}
 	}
 
 }

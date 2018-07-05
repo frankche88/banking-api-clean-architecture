@@ -30,13 +30,9 @@ public class JPAHibernateTest {
 		configuration.addResource("hibernate/customer.hbm.xml");
 		configuration.addResource("hibernate/bankAccount.hbm.xml");
 
-		configuration.setProperty("hibernate.dialect",
+		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 
-				"org.hibernate.dialect.H2Dialect");
-
-		configuration.setProperty("hibernate.connection.driver_class",
-
-				"org.h2.Driver");
+		configuration.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
 
 		configuration.setProperty("hibernate.connection.url", "jdbc:h2:mem:test;MODE=MYSQL;INIT=RUNSCRIPT FROM 'classpath:db/V1_1__create_customer.sql'\\;RUNSCRIPT FROM 'classpath:db/V1_2__create_bank_account.sql'");
 

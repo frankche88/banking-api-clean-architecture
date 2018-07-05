@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import banking.common.api.controller.ResponseHandler;
+import banking.common.application.EntityNotFoundResultException;
 import banking.common.application.dto.PaggedResponse;
 import banking.customers.application.CustomerApplicationService;
 import banking.customers.application.dto.CustomerDto;
@@ -54,7 +55,11 @@ public class CustomerController {
 			
 			return this.responseHandler.getOkObjectResponse(response);
 			
-		} catch(IllegalArgumentException ex) {
+		} catch (EntityNotFoundResultException ex) {	
+			
+			return this.responseHandler.getNotFoundObjectResponse("Customer not found", ex);
+
+		}  catch(IllegalArgumentException ex) {
 			
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
 		
@@ -80,6 +85,10 @@ public class CustomerController {
 			}
 			return this.responseHandler.getOkObjectResponse(customerDtoMapper.mapper(customer));
 			
+		} catch (EntityNotFoundResultException ex) {	
+			
+			return this.responseHandler.getNotFoundObjectResponse("Customer not found", ex);
+
 		} catch(IllegalArgumentException ex) {
 			
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
@@ -106,6 +115,10 @@ public class CustomerController {
 			}
 			return this.responseHandler.getOkObjectResponse(customerDtoMapper.mapper(customer));
 			
+		} catch (EntityNotFoundResultException ex) {	
+			
+			return this.responseHandler.getNotFoundObjectResponse("Customer not found", ex);
+
 		} catch(IllegalArgumentException ex) {
 			
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());

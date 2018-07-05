@@ -1,9 +1,6 @@
 package banking.oauth.api.controller;
 
-import java.security.Key;
-import java.util.Base64;
-
-import javax.crypto.spec.SecretKeySpec;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -12,46 +9,87 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import banking.oauth.server.AccessTokenResponse;
+import banking.common.api.controller.ResponseHandler;
+import banking.common.application.EntityNotFoundResultException;
+import banking.security.application.UserApplicationService;
+import banking.security.application.dto.CredentialInputDto;
+import banking.security.application.dto.JwTokenOutputDto;
 import io.dropwizard.hibernate.UnitOfWork;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 
 @Path("/api")
 public class SecurityController {
+
+	@Inject
+	ResponseHandler responseHandler;
+
+	@Inject
+	UserApplicationService userApplicationService;
 
 	@POST
 	@Path("/security")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
-	public Response authenticate(@FormParam("grant_type") String grantType, 
-			@FormParam("password") String password,
+	public Response authenticateOATH(@FormParam("grant_type") String grantType, @FormParam("password") String password,
 			@FormParam("username") String username) throws Exception {
-		
-		// get base64 encoded version of the key
-		String encodedKey = "k8zgjphoSZl4aTtNKiOXMQ==";
-		
-		// decode the base64 encoded string
-		byte[] decodedKey = Base64.getDecoder().decode(encodedKey);
-		// rebuild key using SecretKeySpec
-		Key secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
-		
-		System.out.println("SecurityController.authenticate()" + encodedKey);
-		
-		//Key key = MacProvider.generateKey();
-		
-		String accessToken = Jwts.builder()
-				  .setSubject("Joe")
-				  .signWith(SignatureAlgorithm.HS512, secretKey)
-				  .compact();
-		System.out.println("SecurityController.authenticate() Bearer " + accessToken);
-		
-		AccessTokenResponse AccessTokenResponse = new AccessTokenResponse(accessToken, "jwt", 36000, accessToken,
-				"frank");
-		
-		
-		return Response.accepted(AccessTokenResponse).build();
+
+		try {
+
+			JwTokenOutputDto response = userApplicationService.verifyUser(username, password);
+
+			if (response == null) {
+
+				return this.responseHandler.getNotFoundObjectResponse("User not found");
+
+			}
+
+			return this.responseHandler.getOkObjectResponse(response);
+
+		} catch (EntityNotFoundResultException ex) {	
+			
+			return this.responseHandler.getNotFoundObjectResponse("User not found", ex);
+
+		} catch (IllegalArgumentException ex) {
+
+			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
+
+		} catch (Throwable ex) {
+
+			return this.responseHandler.getAppExceptionResponse(ex);
+		}
+	}
+
+	@POST
+	@Path("/auth")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@UnitOfWork
+	public Response authenticate(CredentialInputDto dto) throws Exception {
+
+		try {
+
+			JwTokenOutputDto response = userApplicationService.verifyUser(dto);
+
+			if (response == null) {
+
+				return this.responseHandler.getNotFoundObjectResponse("User not found");
+
+			}
+
+			return this.responseHandler.getOkObjectResponse(response);
+
+		} catch (EntityNotFoundResultException ex) {	
+			
+			return this.responseHandler.getNotFoundObjectResponse("User not found", ex);
+
+		} catch (IllegalArgumentException ex) {
+
+			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
+
+		} catch (Throwable ex) {
+
+			return this.responseHandler.getAppExceptionResponse(ex);
+		}
 	}
 
 }

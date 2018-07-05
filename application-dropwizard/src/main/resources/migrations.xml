@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="frankche88">
+        <createTable tableName="customer">
+            <column name="customer_id" type="bigint" autoIncrement="true" startWith="100">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="document_number" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex 
+            indexName="IX_customer_last_first_name"
+            tableName="customer">
+        	<column name="first_name" type="varchar(50)"/>
+        	<column name="last_name" type="varchar(50)"/>
+    	</createIndex>
+        <createIndex 
+            indexName="IX_customer_document_number"
+            tableName="customer">
+        	<column name="document_number" type="varchar(50)"/>
+    	</createIndex>
+    </changeSet>
+
+    <changeSet id="2" author="frankche88">
+        <createTable tableName="bank_account">
+            <column name="bank_account_id" type="bigint" autoIncrement="true"  startWith="100">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="number" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="locked" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex 
+            indexName="IX_bank_account_customer_id"
+            tableName="bank_account">
+        	<column name="customer_id" type="varchar(50)"/>
+    	</createIndex>
+        <createIndex 
+            indexName="UQ_bank_account_number"
+            tableName="bank_account"
+            unique="true">
+        	<column name="number" type="varchar(50)"/>
+    	</createIndex>
+    	<addForeignKeyConstraint baseColumnNames="customer_id"
+            baseTableName="bank_account"
+            constraintName="FK_bank_account_customer_id"
+            referencedColumnNames="customer_id"
+            referencedTableName="customer"/>
+    </changeSet>
+    
+    <changeSet id="3" author="frankche88">
+        <createTable tableName="users">
+            <column name="username" type="varchar(45)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="password" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="4" author="frankche88">
+        <createTable tableName="user_roles">
+            <column name="user_role_id" type="bigint" autoIncrement="true"  startWith="100">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+    	<addForeignKeyConstraint baseColumnNames="username"
+            baseTableName="user_roles"
+            constraintName="fk_users_username"
+            referencedColumnNames="username"
+            referencedTableName="users"/>
+    </changeSet>
+    
+    
+
+	<changeSet author="frankche88" id="insert-1">
+	    <insert dbms="h2, mysql"
+	            tableName="users">
+	        <column name="username" value="admin"/>
+	        <column name="password" value="$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y"/>
+	        <column name="enabled" value="true"/>
+	    </insert>
+	    
+	    <insert dbms="h2, mysql"
+	            tableName="users">
+	        <column name="username" value="client1"/>
+	        <column name="password" value="$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y"/>
+	        <column name="enabled" value="true"/>
+	    </insert>
+	    
+	    <insert dbms="h2, mysql"
+	            tableName="user_roles">
+	        <column name="username" value="admin"/>
+	        <column name="role" value="ROLE_ADMIN"/>
+	    </insert>
+	    
+	    <insert dbms="h2, mysql"
+	            tableName="user_roles">
+	        <column name="username" value="client1"/>
+	        <column name="role" value="ROLE_USER"/>
+	    </insert>
+	    
+	</changeSet>
+	
+	    
+    
+</databaseChangeLog>

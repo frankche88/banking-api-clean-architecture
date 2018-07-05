@@ -9,6 +9,7 @@ import org.eclipse.jetty.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import banking.common.application.EntityNotFoundResultException;
 import banking.common.application.dto.ErrorDto;
 import banking.common.application.dto.ResponseDto;
 import banking.common.application.dto.ResponseErrorDto;
@@ -73,5 +74,12 @@ public class ResponseHandler {
         responseDto.setResponse(responseErrorDto);
         //return new ResponseEntity<Object>(responseDto.getResponse(), HttpStatus.INTERNAL_SERVER_ERROR);
         return Response.ok().entity(responseDto.getResponse()).status(HttpStatus.NOT_FOUND_404).build();
+	}
+
+
+	public Response getNotFoundObjectResponse(String message, EntityNotFoundResultException e) {
+		
+		logger.error(e.getMessage(), e);
+		return getNotFoundObjectResponse(message);
 	}
 }

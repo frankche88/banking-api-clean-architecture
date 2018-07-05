@@ -19,6 +19,7 @@ import banking.accounts.application.dto.ResponseBankAccountDto;
 import banking.accounts.application.dto.mapper.BankAccountDtoMapper;
 import banking.accounts.domain.entity.BankAccount;
 import banking.common.api.controller.ResponseHandler;
+import banking.common.application.EntityNotFoundResultException;
 import banking.common.application.dto.PaggedResponse;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
@@ -57,6 +58,10 @@ public class AccountsController {
 			}
 
 			return this.responseHandler.getOkObjectResponse(response);
+			
+		} catch (EntityNotFoundResultException ex) {	
+			
+			return this.responseHandler.getNotFoundObjectResponse("Bank Accounts not found", ex);
 
 		} catch (IllegalArgumentException ex) {
 
@@ -86,7 +91,11 @@ public class AccountsController {
 			}
 			return this.responseHandler.getOkObjectResponse(bankAccountDtoMapper.mapper(bankAccount));
 
-		} catch (IllegalArgumentException ex) {
+		} catch (EntityNotFoundResultException ex) {	
+			
+			return this.responseHandler.getNotFoundObjectResponse("Bank Accounts not found", ex);
+
+		}  catch (IllegalArgumentException ex) {
 
 			return this.responseHandler.getAppCustomErrorResponse(ex.getMessage());
 
