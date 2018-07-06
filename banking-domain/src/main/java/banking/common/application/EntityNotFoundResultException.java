@@ -10,5 +10,9 @@ public class EntityNotFoundResultException extends RuntimeException {
 	public EntityNotFoundResultException(String message, Throwable ex) {
 		super(message, ex);
 	}
+	
+	public EntityNotFoundResultException(String message) {
+		super(message);
+	}
 
 }

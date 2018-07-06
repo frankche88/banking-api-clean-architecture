@@ -1,5 +1,6 @@
 package banking.customers.api.controller;
 
+import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
@@ -21,9 +22,11 @@ import banking.customers.application.dto.mapper.CustomerToCustomerDtoMapper;
 import banking.customers.domain.entity.Customer;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Path("/api/customers/")
 @Api(value = "/api/customers/")
+@PermitAll
 public class CustomerController {
 	
 	@Inject
@@ -39,6 +42,10 @@ public class CustomerController {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+	@ApiOperation(value = "List pagged customers",
+		httpMethod = "GET",
+	    response = CustomerDto.class,
+	    responseContainer = "List")
 	public Response listAll(
 			@DefaultValue("1") @QueryParam("pageNumber")int pageNumber, 
 			@DefaultValue("10") @QueryParam("pageSize")int pageSize) {
@@ -73,6 +80,9 @@ public class CustomerController {
 	@Path("{customerId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+	@ApiOperation(value = "find customer by ID",
+		httpMethod = "GET",
+	    response = CustomerDto.class)
 	public Response getCustomerById(@PathParam("customerId") Long id) throws Exception {
 		
 		try {
@@ -103,11 +113,14 @@ public class CustomerController {
 	@Path("/dni/{dni}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
-	public Response getCustomerByDni(@PathParam("dni") String id) throws Exception {
+	@ApiOperation(value = "find customer by dni",
+	httpMethod = "GET",
+    response = CustomerDto.class)
+	public Response getCustomerByDni(@PathParam("dni") String dni) throws Exception {
 		
 		try {
 			
-			Customer  customer = customerApplicationService.getCustomerByDni(id);
+			Customer  customer = customerApplicationService.getCustomerByDni(dni);
 			if(customer == null) {
 				
 				return this.responseHandler.getNotFoundObjectResponse("Customer not found");
@@ -132,6 +145,8 @@ public class CustomerController {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+	@ApiOperation(value = "Create customer",
+	httpMethod = "POST")
 	public Response saveCustomer(CustomerDto customer) throws Exception {
 		
 		try {
@@ -154,6 +169,8 @@ public class CustomerController {
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+	@ApiOperation(value = "Update customer",
+	httpMethod = "PUT")
 	public Response updateCustomer(CustomerDto customer) throws Exception {
 		
 		try {

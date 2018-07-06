@@ -11,6 +11,7 @@ import banking.accounts.application.dto.ResponseBankAccountDto;
 import banking.accounts.application.dto.mapper.BankAccountDtoMapper;
 import banking.accounts.domain.entity.BankAccount;
 import banking.accounts.domain.repository.BankAccountRepository;
+import banking.common.application.EntityNotFoundResultException;
 import banking.common.application.Notification;
 import banking.common.application.dto.PaggedResponse;
 
@@ -24,7 +25,7 @@ public class BankAccountService {
 	BankAccountDtoMapper bankAccountDtoMapper;
 	
 	
-	@Transactional
+	@Transactional(dontRollbackOn=EntityNotFoundResultException.class)
 	public BankAccount getBankAccountById(long id) throws Exception {
 		Notification notification = this.validation(id);
 		if (notification.hasErrors()) {
@@ -36,7 +37,7 @@ public class BankAccountService {
 
 	
 
-	@Transactional
+	@Transactional(dontRollbackOn=EntityNotFoundResultException.class)
 	public PaggedResponse<ResponseBankAccountDto> findAllPaged(int pageNumber, int pageSize) throws Exception {
 		Notification notification = this.validation(pageNumber, pageSize);
 		if (notification.hasErrors()) {
@@ -57,7 +58,7 @@ public class BankAccountService {
 	}
 
 
-	@Transactional
+	@Transactional(dontRollbackOn=EntityNotFoundResultException.class)
 	public void save(RequestBankAccountDto dto) {
 		Notification notification = this.validation(dto);
 
@@ -73,7 +74,7 @@ public class BankAccountService {
 		
 	}
 	
-	@Transactional
+	@Transactional(dontRollbackOn=EntityNotFoundResultException.class)
 	public BankAccount update(RequestBankAccountDto dto) {
 		Notification notification = this.validation(dto);
 

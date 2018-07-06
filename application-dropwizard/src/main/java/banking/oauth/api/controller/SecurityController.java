@@ -15,8 +15,11 @@ import banking.security.application.UserApplicationService;
 import banking.security.application.dto.CredentialInputDto;
 import banking.security.application.dto.JwTokenOutputDto;
 import io.dropwizard.hibernate.UnitOfWork;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Path("/api")
+@Api(value = "/api")
 public class SecurityController {
 
 	@Inject
@@ -25,11 +28,11 @@ public class SecurityController {
 	@Inject
 	UserApplicationService userApplicationService;
 
-	@POST
-	@Path("/security")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Produces(MediaType.APPLICATION_JSON)
-	@UnitOfWork
+	//@POST
+	//@Path("/security")
+	//@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	//@Produces(MediaType.APPLICATION_JSON)
+	//@UnitOfWork
 	public Response authenticateOAUTH(@FormParam("grant_type") String grantType, @FormParam("password") String password,
 			@FormParam("username") String username) throws Exception {
 
@@ -64,6 +67,10 @@ public class SecurityController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+
+	@ApiOperation(value = "Autenticate method",
+		httpMethod = "POST",
+	    response = JwTokenOutputDto.class)
 	public Response authenticate(CredentialInputDto dto) throws Exception {
 
 		try {

@@ -84,6 +84,12 @@ public class CustomerHibernateRepository extends BaseHibernateRepository<Custome
 			indexQuery.setMaxResults(pageSize);
 	
 			List<Long> indexPaged = indexQuery.getResultList();
+			
+			if(indexPaged == null || indexPaged.size()<=0 ) {
+				
+				throw new EntityNotFoundResultException("Customers not found");
+				
+			}
 	
 			// paged result
 			CriteriaQuery<Customer> criteriaQuery = criteriaBuilder.createQuery(Customer.class);

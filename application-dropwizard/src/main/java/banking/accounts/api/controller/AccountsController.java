@@ -1,5 +1,6 @@
 package banking.accounts.api.controller;
 
+import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
@@ -27,6 +28,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Path("/api/bankAccounts/")
 @Api(value = "/api/bankAccounts")
+@PermitAll
 public class AccountsController {
 
 	@Inject
@@ -110,7 +112,7 @@ public class AccountsController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
 	@ApiOperation(value = "generate accounts number",
-	httpMethod = "GET")
+		httpMethod = "GET")
 	public Response newNumber() {
 		try {
 
@@ -133,6 +135,8 @@ public class AccountsController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+	@ApiOperation(value = "Create accounts",
+		httpMethod = "POST")
 	public Response addBankAccount(RequestBankAccountDto bankAccountDto) {
 		try {
 
@@ -155,6 +159,8 @@ public class AccountsController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
+	@ApiOperation(value = "Update accounts",
+		httpMethod = "PUT")
 	public Response updateBankAccount(@PathParam("ID") long id, RequestBankAccountDto bankAccountDto) {
 
 		try {

@@ -135,6 +135,12 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 			indexQuery.setMaxResults(pageSize);
 	
 			List<Long> indexPaged = indexQuery.getResultList();
+			
+			if(indexPaged == null || indexPaged.size()<=0 ) {
+				
+				throw new EntityNotFoundResultException("BankAccount not found");
+				
+			}
 	
 			// paged result
 			CriteriaQuery<BankAccount> criteriaQuery = criteriaBuilder.createQuery(BankAccount.class);
