@@ -19,18 +19,21 @@ public class CorsBundle implements ConfiguredBundle<BankingConfiguration> {
     @Override
     public void run(BankingConfiguration configuration, Environment environment) throws Exception {
 
-        final FilterRegistration.Dynamic filter = environment.servlets().addFilter(
-                CrossOriginFilter.class.getSimpleName(), CrossOriginFilter.class);
+// Enable CORS headers
+    final FilterRegistration.Dynamic cors =
+        environment.servlets().addFilter("CORS", CrossOriginFilter.class);
 
-        filter.setInitParameters(ImmutableMap.of(
-                //CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "http://localhost:8080,http://localhost:9008, http://cnblogs",
-                CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "*",
-                CrossOriginFilter.ALLOW_CREDENTIALS_PARAM, "true",
-                CrossOriginFilter.ALLOWED_HEADERS_PARAM, "*",
-                CrossOriginFilter.ALLOWED_METHODS_PARAM, "*",
-                CrossOriginFilter.EXPOSED_HEADERS_PARAM, "*"
-        ));
-        filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "*", "/swagger.json");
+    // Configure CORS parameters
+    cors.setInitParameter("allowedOrigins", "*");
+    cors.setInitParameter("allowedHeaders", "X-Requested-With,Content-Type,Accept,Origin");
+    cors.setInitParameter("allowedMethods", "OPTIONS,GET,PUT,POST,DELETE,HEAD");
+
+    // Add URL mapping
+    cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
+
+    // DO NOT pass a preflight request to down-stream auth filters
+    // unauthenticated preflight requests should be permitted by spec
+    cors.setInitParameter(CrossOriginFilter.CHAIN_PREFLIGHT_PARAM, Boolean.FALSE.toString());
 
     }
 
