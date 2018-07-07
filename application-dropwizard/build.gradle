@@ -1,10 +1,10 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-			url "$artifactoryUrl/plugins-release"
-	    }
-       //jcenter()
+      //  maven {
+	//		url "$artifactoryUrl/plugins-release"
+	   // }
+       jcenter()
     }
     dependencies {
         classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
