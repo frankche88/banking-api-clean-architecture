@@ -127,12 +127,12 @@
 
 		<insert dbms="h2, mysql" tableName="user_roles">
 			<column name="username" value="admin" />
-			<column name="role" value="ROLE_ADMIN" />
+			<column name="role" value="admin" />
 		</insert>
 
 		<insert dbms="h2, mysql" tableName="user_roles">
 			<column name="username" value="client1" />
-			<column name="role" value="ROLE_USER" />
+			<column name="role" value="member" />
 		</insert>
 
 	</changeSet>
