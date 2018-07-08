@@ -10,6 +10,7 @@ import banking.accounts.application.dto.RequestBankAccountDto;
 import banking.accounts.application.dto.ResponseBankAccountDto;
 import banking.accounts.domain.entity.BankAccount;
 import banking.customers.domain.entity.Customer;
+import banking.transactions.application.dto.ResponseBankTransferDto;
 
 @Named
 @Singleton
@@ -72,6 +73,22 @@ public class BankAccountDtoMapper {
 		bankAccount.setIsLocked(dto.isLocked());
 		
 		return bankAccount;
+	}
+
+	public List<ResponseBankTransferDto> mapperResponse(List<BankAccount> bankAccounts) {
+		List<ResponseBankTransferDto> lstDto = new ArrayList<>();
+		
+		for (BankAccount bankAccount : bankAccounts) {
+			
+			lstDto.add(mapperResponse(bankAccount));
+		}
+		
+		return lstDto;
+	}
+
+	public ResponseBankTransferDto mapperResponse(BankAccount bankAccount) {
+		ResponseBankTransferDto dto = new ResponseBankTransferDto(bankAccount.getId(), bankAccount.getNumber(), bankAccount.getBalance());
+		return dto;
 	}
 
 }
