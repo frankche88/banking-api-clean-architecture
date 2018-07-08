@@ -17,9 +17,11 @@ import banking.accounts.application.dto.mapper.BankAccountDtoMapper;
 import banking.accounts.domain.entity.BankAccount;
 import banking.common.api.controller.ResponseHandler;
 import banking.common.application.EntityNotFoundResultException;
+import banking.oauth.UserDto;
 import banking.transactions.application.TransactionApplicationService;
 import banking.transactions.application.dto.RequestBankTransferDto;
 import banking.transactions.application.dto.ResponseBankTransferDto;
+import io.dropwizard.auth.Auth;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
 
@@ -59,9 +61,9 @@ public class BankTransferController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
-	public Response getAccountByUserLogged(RequestBankTransferDto requestBankTransferDto) throws Exception {
+	public Response getAccountByUserLogged(@Auth UserDto user) throws Exception {
 		try {
-			long userId = 0;
+			long userId = user.getId();
 			 
 			
 			List<ResponseBankTransferDto> bankAcounts = transactionApplicationService.findAcounstByUser(userId);
