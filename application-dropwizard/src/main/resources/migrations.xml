@@ -167,15 +167,33 @@
 	<changeSet author="bvera" id="insert-bankaccount">
 	
 		
-		<insert dbms="h2, mysql" tableName="bank_account">		
+		<insert dbms="h2, mysql" tableName="bank_account">
+			<column name="bank_account_id" value="1" />
 			<column name="number" value="123-456-001" />
 			<column name="balance" value="1500" />
 			<column name="locked" valueBoolean="false" />
 			<column name="customer_id" value="1" />
 		</insert>
 		
-		<insert dbms="h2, mysql" tableName="bank_account">		
+		<insert dbms="h2, mysql" tableName="bank_account">
+			<column name="bank_account_id" value="2" />		
 			<column name="number" value="123-456-002" />
+			<column name="balance" value="1500" />
+			<column name="locked" valueBoolean="false" />
+			<column name="customer_id" value="2" />
+		</insert>
+		
+		<insert dbms="h2, mysql" tableName="bank_account">
+			<column name="bank_account_id" value="3" />
+			<column name="number" value="223-456-001" />
+			<column name="balance" value="1500" />
+			<column name="locked" valueBoolean="false" />
+			<column name="customer_id" value="1" />
+		</insert>
+		
+		<insert dbms="h2, mysql" tableName="bank_account">
+			<column name="bank_account_id" value="4" />		
+			<column name="number" value="223-456-002" />
 			<column name="balance" value="1500" />
 			<column name="locked" valueBoolean="false" />
 			<column name="customer_id" value="2" />

@@ -64,7 +64,7 @@ public class CustomerController {
 			
 		} catch (EntityNotFoundResultException ex) {	
 			
-			return this.responseHandler.getNotFoundObjectResponse("Customer not found", ex);
+			return this.responseHandler.getNotFoundObjectResponse("Customer not found");
 
 		}  catch(IllegalArgumentException ex) {
 			

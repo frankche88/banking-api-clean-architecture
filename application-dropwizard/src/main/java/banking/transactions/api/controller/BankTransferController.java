@@ -78,7 +78,7 @@ public class BankTransferController {
 			
 		} catch (EntityNotFoundResultException ex) {	
 			
-			return this.responseHandler.getNotFoundObjectResponse("Bank Accounts not found", ex);
+			return this.responseHandler.getNotFoundObjectResponse("Bank Accounts not found");
 
 		} catch (IllegalArgumentException ex) {
 

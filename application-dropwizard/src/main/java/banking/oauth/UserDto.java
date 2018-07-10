@@ -6,11 +6,13 @@ import java.util.Set;
 
 public class UserDto implements Principal {
 	
-	String name;
+	private String name;
+	
+	private long customerId;
 	
 	private Set<String> roles = new HashSet<>();
 
-	public UserDto(String name) {
+	public UserDto(String name, long customerId) {
 		this.name = name;
 	}
 
@@ -27,8 +29,8 @@ public class UserDto implements Principal {
 	    return name;
     }
 
-    public int getId() {
-	    return (int) (Math.random() * 100);
+    public long getId() {
+	    return customerId;
     }
 
 	public Set<String> getRoles() {

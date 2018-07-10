@@ -55,14 +55,18 @@ public class OAuthDynamicFeature extends AuthDynamicFeature {
 				Jws<Claims> jwsClaims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(credentials);
 
 				String username = jwsClaims.getBody().getSubject();
+				
+				Long customerId = (Long)jwsClaims.getBody().get("customerId");
 
 				String role = (String) jwsClaims.getBody().get("role");
+				
+				//{"sub":"client1","customerId":2,"userName":"client1","role":"member"}
 
-				UserDto user = new UserDto(username);
+				UserDto user = new UserDto(username, customerId.longValue());
 
 				user.addRole(role);
 
-				return Optional.of(username != null ? new UserDto(username) : null);
+				return Optional.of(username != null ? user : null);
 
 			} catch (SignatureException e) {
 
