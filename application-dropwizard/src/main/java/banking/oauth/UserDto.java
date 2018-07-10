@@ -13,6 +13,7 @@ public class UserDto implements Principal {
 	private Set<String> roles = new HashSet<>();
 
 	public UserDto(String name, long customerId) {
+		this.customerId = customerId;
 		this.name = name;
 	}
 

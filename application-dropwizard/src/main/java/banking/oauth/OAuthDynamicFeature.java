@@ -10,6 +10,8 @@ import javax.inject.Singleton;
 import javax.ws.rs.ext.Provider;
 
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import banking.security.application.UserApplicationService;
 import io.dropwizard.auth.AuthDynamicFeature;
@@ -28,6 +30,8 @@ import io.jsonwebtoken.SignatureException;
 public class OAuthDynamicFeature extends AuthDynamicFeature {
 	
 	private static final String JWt_ENCODED_KEY = UserApplicationService.JWt_ENCODED_KEY;
+	
+	Logger logger = LoggerFactory.getLogger(OAuthDynamicFeature.class);
 
 	@Inject
 	public OAuthDynamicFeature(OAuthAuthenticator authenticator, UserAuthorizer authorizer, Environment environment) {
@@ -41,6 +45,8 @@ public class OAuthDynamicFeature extends AuthDynamicFeature {
 
 	@Singleton
 	public static class OAuthAuthenticator implements Authenticator<String, UserDto> {
+		
+		Logger logger = LoggerFactory.getLogger(OAuthDynamicFeature.class);
 
 		@Override
 		public Optional<UserDto> authenticate(String credentials) throws AuthenticationException {
@@ -53,10 +59,14 @@ public class OAuthDynamicFeature extends AuthDynamicFeature {
 				Key secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
 
 				Jws<Claims> jwsClaims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(credentials);
+				
+				logger.info("jwsClaims: " + jwsClaims);
 
 				String username = jwsClaims.getBody().getSubject();
 				
-				Long customerId = (Long)jwsClaims.getBody().get("customerId");
+				Long customerId = new Long((Integer)jwsClaims.getBody().get("customerId"));
+				
+				logger.info("customerId: " + customerId);
 
 				String role = (String) jwsClaims.getBody().get("role");
 				

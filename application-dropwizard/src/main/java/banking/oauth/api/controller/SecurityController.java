@@ -76,6 +76,8 @@ public class SecurityController {
 		try {
 
 			JwTokenOutputDto response = userApplicationService.verifyUser(dto);
+			
+			
 
 			if (response == null) {
 

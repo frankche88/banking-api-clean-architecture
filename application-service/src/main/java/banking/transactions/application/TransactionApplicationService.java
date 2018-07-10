@@ -84,7 +84,7 @@ public class TransactionApplicationService {
 	private Notification validation(long userId) {
 		Notification notification = new Notification();
 		if (userId == 0 ) {
-			notification.addError("User id not valid.");
+			notification.addError("User id not valid." + userId);
 		}
 		return notification;
 	}
