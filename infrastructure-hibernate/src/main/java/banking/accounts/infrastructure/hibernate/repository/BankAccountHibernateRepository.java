@@ -60,20 +60,19 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 
 		try {
 			TypedQuery<BankAccount> query = findByField("number", accountNumber);
-	
+
 			query.setLockMode(LockModeType.PESSIMISTIC_WRITE);
-	
+
 			return query.getSingleResult();
-			
+
 		} catch (javax.persistence.NoResultException e) {
-			
+
 			throw new EntityNotFoundResultException(e.getMessage(), e);
 		}
 
 	}
 
 	private TypedQuery<BankAccount> findByField(String field, Object valueField) {
-		
 
 		CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
 
@@ -118,46 +117,72 @@ public class BankAccountHibernateRepository extends BaseHibernateRepository<Bank
 
 	@Override
 	public List<BankAccount> findAllPaginated(int pageNumber, int pageSize) {
-		
+
 		try {
 
 			CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
-	
+
 			CriteriaQuery<Long> indexCriteria = criteriaBuilder.createQuery(Long.class);
-	
+
 			Root<BankAccount> fromIndex = indexCriteria.from(BankAccount.class);
-	
+
 			indexCriteria.multiselect(fromIndex.get("id"));
-	
+
 			TypedQuery<Long> indexQuery = getSession().createQuery(indexCriteria);
-	
+
 			indexQuery.setFirstResult((pageNumber - 1) * pageSize);
 			indexQuery.setMaxResults(pageSize);
-	
+
 			List<Long> indexPaged = indexQuery.getResultList();
-			
-			if(indexPaged == null || indexPaged.size()<=0 ) {
-				
+
+			if (indexPaged == null || indexPaged.size() <= 0) {
+
 				throw new EntityNotFoundResultException("BankAccount not found");
-				
+
 			}
-	
+
 			// paged result
 			CriteriaQuery<BankAccount> criteriaQuery = criteriaBuilder.createQuery(BankAccount.class);
-	
+
 			Root<BankAccount> from = criteriaQuery.from(BankAccount.class);
-	
+
 			CriteriaQuery<BankAccount> select = criteriaQuery.select(from);
-	
+
 			Predicate condition = from.get("id").in(indexPaged);
-	
+
 			TypedQuery<BankAccount> typedQuery = getSession().createQuery(select.where(condition));
-	
+
 			return typedQuery.getResultList();
 		} catch (javax.persistence.NoResultException e) {
-			
+
 			throw new EntityNotFoundResultException(e.getMessage(), e);
 		}
+	}
+
+	@Override
+	public long max() {
+
+		try {
+			
+			
+			CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
+
+			CriteriaQuery<Long> indexCriteria = criteriaBuilder.createQuery(Long.class);
+
+			Root<BankAccount> fromIndex = indexCriteria.from(BankAccount.class);
+
+			indexCriteria.multiselect(criteriaBuilder.max(fromIndex.get("id")));
+			
+			TypedQuery<Long> query = getSession().createQuery(indexCriteria);
+			
+			return query.getFirstResult();
+			
+
+		} catch (javax.persistence.NoResultException e) {
+
+			return 0;
+		}
+
 	}
 
 }

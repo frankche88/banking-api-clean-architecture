@@ -23,9 +23,15 @@ public class ResponseBankTransferDto extends RequestBaseDto {
 	public long getId() {
 		return id;
 	}
+	
 	public String getNumber() {
 		return number;
 	}
+	
+	public String getAccountNumber() {
+		return number;
+	}
+	
 	public BigDecimal getBalance() {
 		return balance;
 	}

@@ -19,5 +19,7 @@ public interface BankAccountRepository {
 	BankAccount findById(long id);
 
 	void update(BankAccount bankAccount);
+
+	long max();
 	
 }

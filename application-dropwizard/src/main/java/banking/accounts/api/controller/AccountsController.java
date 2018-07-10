@@ -116,10 +116,12 @@ public class AccountsController {
 	public Response newNumber() {
 		try {
 
-			BankAccount bankAccount = new BankAccount();
+			//BankAccount bankAccount = new BankAccount();
+			
+			String bankAccount = bankAccountService.genBankAccount();
 
 	
-			return this.responseHandler.getOkObjectResponse("{\"accountNumber\": \"" + bankAccount.generateNumber() + "\"}");
+			return this.responseHandler.getOkObjectResponse("{\"accountNumber\": \"" + bankAccount + "\"}");
 
 		} catch (IllegalArgumentException ex) {
 

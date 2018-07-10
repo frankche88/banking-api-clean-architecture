@@ -98,6 +98,20 @@ public class BankAccountService {
 	}
 	
 
+
+
+
+	public String genBankAccount() {
+
+		long bankAccountNumber = this.bankAccountRepository.countBankAccount();
+		
+		String formatted = String.format("%017d", bankAccountNumber);
+		
+		return bankAccountNumber == 0 ? "100000000000000000"  : "1" + formatted;
+		
+	}
+	
+
 	private Notification validation(RequestBankAccountDto dto) {
 		Notification notification = new Notification();
 		if ( dto.getCustomerId()  <= 0) {
