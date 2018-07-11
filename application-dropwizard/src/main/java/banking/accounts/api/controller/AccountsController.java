@@ -1,5 +1,8 @@
 package banking.accounts.api.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -120,8 +123,11 @@ public class AccountsController {
 			
 			String bankAccount = bankAccountService.genBankAccount();
 
-	
-			return this.responseHandler.getOkObjectResponse("{\"accountNumber\": \"" + bankAccount + "\"}");
+			Map<String, Object> response = new HashMap<>();
+			
+			response.put("accountNumber", bankAccount);
+			
+			return this.responseHandler.getOkObjectResponse(response);
 
 		} catch (IllegalArgumentException ex) {
 

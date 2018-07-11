@@ -58,14 +58,22 @@ public class CustomerDto extends RequestBaseDto {
 
 	//private Set<BankAccountDto> bankAccountsDto;
 
-	public String getFirstName() {
-		return firstName;
+
+	public String getFullName() {
+		return String.format("%s, %s", this.lastName, this.firstName);
 	}
 
-	public String getLastName() {
-		return lastName;
+
+	public void setId(long id) {
+		this.id = id;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "CustomerDto [id=" + id + ", dni=" + dni + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", userName=" + userName + ", password=" + password + ", active=" + active + "]";
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -74,8 +82,12 @@ public class CustomerDto extends RequestBaseDto {
 		return dni;
 	}
 
-	public String getFullName() {
-		return String.format("%s, %s", this.lastName, this.firstName);
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
 	}
 
 	public String getEmail() {
@@ -86,15 +98,13 @@ public class CustomerDto extends RequestBaseDto {
 		return userName;
 	}
 
-	public boolean isActive() {
-		return active;
-	}
-
 	public String getPassword() {
 		return password;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public boolean isActive() {
+		return active;
 	}
+	
+	
 }

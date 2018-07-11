@@ -75,8 +75,8 @@ public class CustomerToCustomerDtoMapper {
 	}
 
 	public User userMapper(CustomerDto dto) {
-		String username = dto.getPassword();
-		String password = dto.getUserName();
+		String username = dto.getUserName();
+		String password = dto.getPassword();
 		
 		User user = new User(username, password, true);
 		

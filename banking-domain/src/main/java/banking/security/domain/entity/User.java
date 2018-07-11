@@ -106,6 +106,12 @@ public class User {
 	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
 	}
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + ", enabled=" + enabled + ", customerId="
+				+ customerId + ", userRole=" + userRole + "]";
+	}
 	
 
 }

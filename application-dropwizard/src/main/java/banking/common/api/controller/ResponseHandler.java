@@ -1,7 +1,9 @@
 package banking.common.api.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.core.Response;
 
@@ -29,7 +31,20 @@ public class ResponseHandler {
     }
 	
 	
+	
+	
 	public Response getOkObjectResponse(Object message) {
+		
+		if(message instanceof String) {
+			
+			Map<String, Object> responseOK = new HashMap<>();
+			
+			responseOK.put("message", message);
+			
+			return Response.ok().entity(responseOK).status(HttpStatus.OK_200).build();
+		}
+		
+		
 		
 		return Response.ok().entity(message).status(HttpStatus.OK_200).build();
     }

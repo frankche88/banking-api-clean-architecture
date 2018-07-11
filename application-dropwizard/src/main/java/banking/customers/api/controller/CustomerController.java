@@ -166,7 +166,7 @@ public class CustomerController {
 	}
 	
 	@PUT
-	@Path("{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
 	@ApiOperation(value = "Update customer",

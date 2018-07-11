@@ -30,12 +30,12 @@ public class CustomerDtoDeserializer extends JsonDeserializer<CustomerDto> {
             } catch(RuntimeException e) {
             	
             }
-            
+
             String documentNumber = node.get("dni").asText();
             
-            String firstName = node.get("dni").asText();
+            String firstName = node.get("firstName").asText();
             
-            String lastName = node.get("dni").asText();
+            String lastName = node.get("lastName").asText();
             
             String username = node.get("userName").asText();
             

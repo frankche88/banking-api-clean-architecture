@@ -7,7 +7,10 @@ import javax.inject.Named;
 import javax.transaction.Transactional;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import banking.common.application.EntityNotFoundResultException;
 import banking.common.application.Notification;
 import banking.common.application.dto.PaggedResponse;
 import banking.common.application.enumeration.RequestBodyType;
@@ -20,6 +23,8 @@ import banking.security.domain.repository.UserRepository;
 
 @Named
 public class CustomerApplicationService {
+	
+	private Logger logger = LoggerFactory.getLogger(CustomerApplicationService.class);
 
 	@Inject
 	private CustomerRepository customerRepository;
@@ -74,16 +79,38 @@ public class CustomerApplicationService {
 	@Transactional
 	public void save(CustomerDto dto) {
 
+		
 		Notification notification = this.validation(dto);
+		try {
+			User user = userRepository.findByUserName(dto.getUserName());
+			
+			notification.addError("User exist: " + user.getUsername());
+			
+		} catch (EntityNotFoundResultException e) {
+			
+		}
+		
+		try {
+			Customer user = customerRepository.findByDni(dto.getDni());
+			
+			notification.addError("Customer with dni exist: " + user.getDocumentNumber());
+			
+		} catch (EntityNotFoundResultException e) {
+			
+		}
 
 		if (notification.hasErrors()) {
 			throw new IllegalArgumentException(notification.errorMessage());
 		}
 
+		User user = customerDtoMapper.userMapper(dto);
+		
+		logger.info(dto.toString());
+		
+		logger.info(user.toString());
+		
 		Customer customer = customerDtoMapper.reverseMapper(dto);
 		
-		User user = customerDtoMapper.userMapper(dto);
-
 		this.customerRepository.save(customer);
 
 		user.setCustomerId(customer.getId());

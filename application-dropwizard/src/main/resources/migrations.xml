@@ -72,7 +72,7 @@
 	<changeSet id="3" author="frankche88">
 		<createTable tableName="users">
 			<column name="username" type="varchar(45)">
-				<constraints primaryKey="true" nullable="false" />
+				<constraints primaryKey="true" nullable="false" primaryKeyName ="pk_users"/>
 			</column>
 			<column name="password" type="varchar(60)">
 				<constraints nullable="false" />
@@ -90,7 +90,7 @@
 		<createTable tableName="user_roles">
 			<column name="user_role_id" type="bigint" autoIncrement="true"
 				startWith="100">
-				<constraints primaryKey="true" nullable="false" />
+				<constraints primaryKey="true" nullable="false" primaryKeyName ="pk_roles"/>
 			</column>
 			<column name="username" type="varchar(45)">
 				<constraints nullable="false" />
