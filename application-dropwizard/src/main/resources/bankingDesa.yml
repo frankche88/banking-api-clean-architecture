@@ -2,7 +2,7 @@ server:
   maxThreads: 40
   minThreads: 8
   maxQueuedRequests: 1024
-  allowedMethods: [GET,POST]
+  allowedMethods: [GET,POST,PUT,DELETE,OPTIONS]
   gzip:
     enabled: true
     bufferSize: 8KiB
