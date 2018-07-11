@@ -13,6 +13,9 @@
         <property name="password" type="string">
             <column name="password" length="60" not-null="true" />
         </property>
+        <property name="email" type="string">
+            <column name="email" length="60" not-null="false" />
+        </property>
         <property name="enabled" type="boolean">
             <column name="enabled" not-null="true" />
         </property>

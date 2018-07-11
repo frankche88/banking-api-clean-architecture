@@ -24,7 +24,7 @@ import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Path("/api/customers/")
+@Path("/api")
 @Api(value = "/api/customers/")
 @PermitAll
 public class CustomerController {
@@ -40,6 +40,7 @@ public class CustomerController {
 	CustomerToCustomerDtoMapper customerDtoMapper;
 	
 	@GET
+	@Path("/customers/")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
 	@ApiOperation(value = "List pagged customers",
@@ -77,7 +78,7 @@ public class CustomerController {
 	}
 	
 	@GET
-	@Path("{customerId}")
+	@Path("/customers/{customerId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
 	@ApiOperation(value = "find customer by ID",
@@ -110,7 +111,7 @@ public class CustomerController {
 	}
 	
 	@GET
-	@Path("/dni/{dni}")
+	@Path("/customers/dni/{dni}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
 	@ApiOperation(value = "find customer by dni",
@@ -143,6 +144,7 @@ public class CustomerController {
 	}
 	
 	@POST
+	@Path("/customers")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
 	@ApiOperation(value = "Create customer",
@@ -166,12 +168,12 @@ public class CustomerController {
 	}
 	
 	@PUT
-	@Path("/{id}")
+	@Path("/customers/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@UnitOfWork
 	@ApiOperation(value = "Update customer",
 	httpMethod = "PUT")
-	public Response updateCustomer(CustomerDto customer) throws Exception {
+	public Response updateCustomer(@PathParam("id") Long id, CustomerDto customer) throws Exception {
 		
 		try {
 			

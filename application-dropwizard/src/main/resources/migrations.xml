@@ -80,6 +80,8 @@
 			<column name="customer_id" type="bigint">
 				<constraints nullable="false" />
 			</column>
+			<column name="email" type="varchar(60)">
+			</column>
 			<column name="enabled" type="BIT">
 				<constraints nullable="false" />
 			</column>

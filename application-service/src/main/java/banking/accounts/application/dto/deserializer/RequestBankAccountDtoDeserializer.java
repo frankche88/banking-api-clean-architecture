@@ -34,7 +34,9 @@ public class RequestBankAccountDtoDeserializer extends JsonDeserializer<RequestB
             long id = new Long(node.get("id").asText());
             long customerId = new Long(node.get("customerId").asText());
             String accountNumber = node.get("number").asText();
-            BigDecimal balance = new BigDecimal(node.get("balance").asText());
+            
+            BigDecimal balance = new BigDecimal("0");//new BigDecimal(node.get("balance").asText());
+            
             boolean isLocked = new Boolean(node.get("isLocked").asText());
             
             requestBankTransferDto = new RequestBankAccountDto(id, accountNumber, balance, isLocked, customerId, RequestBodyType.VALID);
