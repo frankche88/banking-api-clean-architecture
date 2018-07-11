@@ -105,6 +105,8 @@ public class BankAccountService {
 
 		long bankAccountNumber = this.bankAccountRepository.countBankAccount();
 		
+		bankAccountNumber = bankAccountNumber + 1;
+		
 		String formatted = String.format("%017d", bankAccountNumber);
 		
 		return bankAccountNumber == 0 ? "100000000000000000"  : "1" + formatted;
