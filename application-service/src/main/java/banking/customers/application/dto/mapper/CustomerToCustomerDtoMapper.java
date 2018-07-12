@@ -7,6 +7,7 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 import banking.customers.application.dto.CustomerDto;
+import banking.customers.application.dto.UpdateCustomerDto;
 import banking.customers.domain.entity.Customer;
 import banking.security.domain.entity.Roles;
 import banking.security.domain.entity.User;
@@ -52,15 +53,11 @@ public class CustomerToCustomerDtoMapper {
 		return lstCustomer;
 	}
 
-	public Customer mergeDtoToCustomer(CustomerDto dto, Customer customer) {
+	public Customer mergeDtoToCustomer(UpdateCustomerDto dto, Customer customer) {
 
 		if (dto.getId() == 0) {
 
 			customer.setId(dto.getId());
-		}
-
-		if (dto.getDni() != null) {
-			customer.setDocumentNumber(dto.getDni());
 		}
 
 		if (dto.getFirstName() != null) {

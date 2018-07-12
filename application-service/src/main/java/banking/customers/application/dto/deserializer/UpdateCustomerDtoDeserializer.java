@@ -13,16 +13,16 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import banking.common.application.enumeration.RequestBodyType;
-import banking.customers.application.dto.CustomerDto;
+import banking.customers.application.dto.UpdateCustomerDto;
 
-public class CustomerDtoDeserializer extends JsonDeserializer<CustomerDto> {
+public class UpdateCustomerDtoDeserializer extends JsonDeserializer<UpdateCustomerDto> {
 	
-	Logger logger = LoggerFactory.getLogger(CustomerDtoDeserializer.class);
+	Logger logger = LoggerFactory.getLogger(UpdateCustomerDtoDeserializer.class);
 
 	@Override
-	public CustomerDto deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+	public UpdateCustomerDto deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
 		
-		CustomerDto dto = null;
+		UpdateCustomerDto dto = null;
 		
 		try {
     		ObjectCodec objectCodec = jsonParser.getCodec();
@@ -30,32 +30,21 @@ public class CustomerDtoDeserializer extends JsonDeserializer<CustomerDto> {
             JsonNode node = objectCodec.readTree(jsonParser);
             
             long id = 0;
-            try {
-            	id = new Long (node.get("id").asText());
-            } catch(RuntimeException e) {
-            	
-            }
 
-            String documentNumber = node.get("dni").asText();
+            id = new Long (node.get("id").asText());
             
             String firstName = node.get("firstName").asText();
             
             String lastName = node.get("lastName").asText();
             
-            String username = node.get("userName").asText();
+            Boolean active = node.get("active").asBoolean();
             
-            String password = node.get("password").asText();
+            dto = new UpdateCustomerDto(id, firstName, lastName, active);
             
-            String email = node.get("email").asText();
-            
-            dto = new CustomerDto(id, documentNumber, firstName, lastName);
-            
-            dto.setUserData(username, password, email);
             
     	} catch(Exception ex) {
     		logger.error(ex.getMessage(), ex);
-    		dto = new CustomerDto();
-    		dto.setRequestBodyType(RequestBodyType.INVALID);
+    		dto = new UpdateCustomerDto(RequestBodyType.INVALID);
     	}
         return dto;
 	}

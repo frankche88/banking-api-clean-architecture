@@ -18,6 +18,7 @@ import banking.common.application.EntityNotFoundResultException;
 import banking.common.application.dto.PaggedResponse;
 import banking.customers.application.CustomerApplicationService;
 import banking.customers.application.dto.CustomerDto;
+import banking.customers.application.dto.UpdateCustomerDto;
 import banking.customers.application.dto.mapper.CustomerToCustomerDtoMapper;
 import banking.customers.domain.entity.Customer;
 import io.dropwizard.hibernate.UnitOfWork;
@@ -173,7 +174,7 @@ public class CustomerController {
 	@UnitOfWork
 	@ApiOperation(value = "Update customer",
 	httpMethod = "PUT")
-	public Response updateCustomer(@PathParam("id") Long id, CustomerDto customer) throws Exception {
+	public Response updateCustomer(@PathParam("id") Long id, UpdateCustomerDto customer) throws Exception {
 		
 		try {
 			

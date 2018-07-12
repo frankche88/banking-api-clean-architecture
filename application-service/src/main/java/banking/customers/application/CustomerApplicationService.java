@@ -15,6 +15,7 @@ import banking.common.application.Notification;
 import banking.common.application.dto.PaggedResponse;
 import banking.common.application.enumeration.RequestBodyType;
 import banking.customers.application.dto.CustomerDto;
+import banking.customers.application.dto.UpdateCustomerDto;
 import banking.customers.application.dto.mapper.CustomerToCustomerDtoMapper;
 import banking.customers.domain.entity.Customer;
 import banking.customers.domain.repository.CustomerRepository;
@@ -121,8 +122,8 @@ public class CustomerApplicationService {
 
 	}
 
-	public CustomerDto update(CustomerDto dto) {
-		Notification notification = this.validation(dto);
+	public UpdateCustomerDto update(UpdateCustomerDto dto) {
+		Notification notification = this.validationUpdate(dto);
 
 		if (notification.hasErrors()) {
 			throw new IllegalArgumentException(notification.errorMessage());
@@ -131,23 +132,23 @@ public class CustomerApplicationService {
 
 		Customer customer = this.customerRepository.findById(dto.getId());
 		
-		if(customer == null) {
-			
-			return null;
-		}
-
-		
 
 		customer = customerDtoMapper.mergeDtoToCustomer(dto, customer);
 
 		// todo: save usuario
 
 		this.customerRepository.save(customer);
-
-		dto.setId(customer.getId());
 		
 		return dto;
 
+	}
+
+	private Notification validationUpdate(UpdateCustomerDto dto) {
+		Notification notification = new Notification();
+		if (dto == null || dto.getRequestBodyType() == RequestBodyType.INVALID) {
+			notification.addError("Invalid JSON data in request body.");
+		}
+		return notification;
 	}
 
 	private Notification validation(String dni) {
