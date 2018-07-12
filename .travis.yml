@@ -7,7 +7,7 @@ branches:
     - feature1.0
 
 script:
-  - gradle build shadowJar
+  - ./gradlew build shadowJar
 
 before_deploy: cd application-dropwizard
 
