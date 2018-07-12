@@ -2,13 +2,13 @@ sudo: false
 language: java
 jdk:
   - oraclejdk8
-  
+
 branches:
   only:
   - feature1.0
 
 script:
-- ./gradlew build shadowJar
+  - ./gradlew build shadowJar
 
 env:
   global:
@@ -18,8 +18,8 @@ env:
     - CF_PASSWORD=secure: "Uh4CCFJw3imuUFRFRZfQBPyTpow2TXDrMlBSotYJkeSKfXPhUcky3s5VMwDs8yxy9ktXMvdJVHeonn3sIRoYH+EGprMQza/+b/YMLpmzfAKfF2X+uouK6epb6XbJTwLTyGIxVqy+i4VyXlTMCYMjzi1hzeFGeMGsdXPPvShMagDz0t2gYYUZiD+b1obe0ZdJP7hfFllji2HMaq7anQNiAWW+VMQA5E0R+7Q517lFWfz+yBRWsp1lZ/yyOx4gK6K65gFeOQR2E/rUlfCJMfT8Gt9v+pasTBZFntApTU2loJvmrDX679nodRXWWy5/keA9R4bTTr05jEE3Bq4A0IN4Y/WKVvYhJttgG3U/aX7AgqXiGQnCHFOGDn2WTcKCU7ZVMclTDR91Wkh644xRM15X+z43N0B+L85x1+uxMEg2Ae9DLNvP7zhsm1XHhhUiUW+fbeQHjeytXZUrBEB3uO7GHjCG1SMqgnnkgNbpIPytqn9Vf56RCTO5mDZOWj6tcYin2oksJi1+3CgBQVlaKjT4Ja427DJi4EjwyTiliRuF2Kj4VFzrxgds5qyc33nyWFn6H2i/ZELWyAeUozqrT0ccAJ4n1/IT1AwCXhsH2j7vhQMuJsHZUmeSl+e2WmWdFroSNNdfcA+PifEIxsyhZtrveSnHd0xVRv1GEbmIxbqGL7M="
 
 before_deploy:
-- find . -type f -perm 0444
-- export CF_TRACE=true
+  - find . -type f -perm 0444
+  - export CF_TRACE=true
 
 deploy:
   # 1. TO STAGING SPACE (continuously deploy here):
@@ -28,14 +28,6 @@ deploy:
     script: env CF_SPACE=development CF_APP_NAME=banking-dropwizard CF_MANIFEST=manifest-dropwizard.yml ci/deploy_to_cf.sh
     on:
       repo: frankche88/banking-api-clean-architecture
-  # 2. TO LIVE SPACE (when 'live-deploy' tag is pushed to master):
-  #- provider: script
-  #  skip_cleanup: true
-  #  script: env CF_SPACE=live CF_APP_NAME=test-app CF_MANIFEST=manifest-live.yml ci/deploy_to_cf.sh
-  #  on:
-  #    repo: frankche88/banking-api-clean-architecture
-  #    tags: true  
-
 after_deploy:
   # It's possible to run smoke tests during the blue-green deploy (see comment in ci/zero_downtime.rb)
-  # Smoke tests could also be run here to verify all is well post blue-green deploy
+# Smoke tests could also be run here to verify all is well post blue-green deploy
