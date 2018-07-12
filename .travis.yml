@@ -5,7 +5,6 @@ jdk:
   
 branches:
   only:
-  - master
   - feature1.0
 
 script:
