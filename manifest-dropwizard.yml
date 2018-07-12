@@ -1,0 +1,7 @@
+---
+instances: 1
+memory: 1024M
+applications:
+- name: banking-dropwizard
+  path: application-dropwizard/build/libs/application-dropwizard-0.0.1-SNAPSHOT.jar
+command: echo "Starting banking-dropwizard." && $PWD/.java-buildpack/open_jdk_jre/bin/java -cp $PWD/*:. $JAVA_OPTS -Djava.io.tmpdir=$TMPDIR banking.BankingApplication server $PWD/banking.yml
