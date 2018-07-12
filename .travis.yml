@@ -22,6 +22,8 @@ deploy:
    organization:
     secure: "teG837AGfzL/p6j8RgmrdLILbusAVeb+vbmr+NK14uKhNdwgMKLmSld8Vsg+bFN9stDFfdRciTJsBloOe9jAO164lAyvlU4g7eWKJIvN1pDVuvEQna55COcaeuW0vUrerGW0fNxoIKVWytGW/x33IIRH80AOQiBNowutdJlBvQcL6W19lWjeO8OAXDPt4QjAgkEGkCwH2sTO1lQxISdAro8Ow1qs8zjgK9c+gIzNPAs5SeNnSXsrXSop/HCz2QiB148vMZYpOvA/SRrWUCEZQUt4A/iRN6rbcbOOARVsoqHFw8qwd5QnDFndl0poOzJhoR0s0j0+OOd+8Pr3x9AUs6nWhl6+vX/B1Fxo0dYURB6VMC9A/8cRpIvCp2I08fTuV8tlrpCf+KvaNPnFJtjYfQX9AQeKmpAVsot6M0eHkU9Y/rudn+6SLD58WnpZih5JU2BNM2vVECee8O1CCMU2+3Itu4Oj6X3UAofLZtWAjdm87ykxHncYs3HrEzWNeJXvNy1+MevqU7R+C4Nx8q+wMCvtxH+v1u374EUvvxxJfxAelUfoHeX+lD5GBbr6m9sF0Y8sjZUjm5E8P6xxCv66iZ6stqU4KCSnzSmHzOpS3gPmfHkE/zUB09CsTaAtVpYWJqqg2ZGJPzBLfM6GqpX+j7mLfPZKbICXiHDe4n7rS7g="
    space: development
+   on:
+    branch: feature1.0
 
 notifications:
   email: # only receive email when the build status changes (someone broke the build!) 
