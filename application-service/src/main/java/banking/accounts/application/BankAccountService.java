@@ -133,6 +133,11 @@ public class BankAccountService {
 			notification.addError("Page size must be greater than zero.");
 			return notification;
 		}
+		
+		if (pageSize > 100) {
+			notification.addError("Page size must not be greater than one hundred.");
+			return notification;
+		}
 		return notification;
 	}
 
