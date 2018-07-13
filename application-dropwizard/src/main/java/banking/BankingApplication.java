@@ -25,6 +25,9 @@ public class BankingApplication extends Application<BankingConfiguration> {
 
 	@Override
 	public void initialize(Bootstrap<BankingConfiguration> bootstrap) {
+		
+		bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(
+                bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor(false)));
 
 		bootstrap.addBundle(new MigrationsBundle<BankingConfiguration>() {
 			@Override
