@@ -15,10 +15,10 @@ server:
       port: 8081
 # Database settings.
 database:
-  driverClass: org.postgresql.Driver
-  user: root
-  password: root123456
-  url: 'jdbc:postgresql://dbbanking.cwmjjsstjgmk.us-east-1.rds.amazonaws.com:5432/db_pg_banking'
+  driverClass: com.mysql.jdbc.Driver
+  user: b011265cf3f586
+  password: ef089e18
+  url: 'jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/ad_339e765913be8f5'
   maxWaitForConnection: 1s
   validationQuery: "/* MyService Health Check */ SELECT 1"
   minSize: 2
@@ -29,7 +29,7 @@ database:
   minIdleTime: 1 minute
   properties:
     charSet: UTF-8
-    hibernate.dialect: org.hibernate.dialect.PostgreSQL94Dialect
+    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
     hibernate.show_sql: true
     hibernate.generate_statistics: false
     hibernate.hbm2ddl.auto: validate # validates schema when service is started

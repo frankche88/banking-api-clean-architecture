@@ -40,8 +40,8 @@ runShadow {
 }
 
 run {
-    //args 'db', 'migrate', 'src/main/resources/bankingDesa.yml'
-    args 'server', 'src/main/resources/bankingDesa.yml'
+    //args 'db', 'migrate', 'src/main/resources/bankingPostgres.yml'
+    args 'server', 'src/main/resources/bankingPostgres.yml'
 
 }
 

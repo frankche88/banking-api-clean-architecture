@@ -20,6 +20,8 @@ import banking.customers.application.dto.mapper.CustomerToCustomerDtoMapper;
 import banking.customers.domain.entity.Customer;
 import banking.customers.domain.repository.CustomerRepository;
 import banking.security.domain.entity.User;
+import banking.security.domain.entity.UserRole;
+import banking.security.domain.repository.UserRoleRepository;
 import banking.security.domain.repository.UserRepository;
 
 @Named
@@ -32,6 +34,9 @@ public class CustomerApplicationService {
 	
 	@Inject
 	private UserRepository userRepository;
+	
+	@Inject
+	private UserRoleRepository roleRepository;
 
 	@Inject
 	CustomerToCustomerDtoMapper customerDtoMapper;
@@ -117,6 +122,8 @@ public class CustomerApplicationService {
 		user.setCustomerId(customer.getId());
 
 		userRepository.save(user);
+		
+		roleRepository.save((UserRole)user.getUserRole().toArray()[0]);
 
 		dto.setId(customer.getId());
 

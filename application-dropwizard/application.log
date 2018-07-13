@@ -1365,3 +1365,141 @@ INFO   [06:44:24.430] [Thread-14] o.e.j.s.AbstractConnector -  Stopped applicati
 INFO   [06:44:24.432] [Thread-14] o.e.j.s.AbstractConnector -  Stopped admin@69b1e8f8{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
 INFO   [06:44:24.436] [Thread-14] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@6958d5d0{/,null,UNAVAILABLE} 
 INFO   [06:44:24.455] [Thread-14] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@14ba7f15{/,null,UNAVAILABLE} 
+INFO   [06:46:41.117] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [06:46:41.123] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [06:46:41.127] [main] i.d.a.AssetsBundle -  Registering AssetBundle with name: swagger-assets for path /swagger-static/* 
+INFO   [06:46:41.164] [main] i.d.a.AssetsBundle -  Registering AssetBundle with name: swagger-oauth2-connect for path /oauth2-redirect.html/* 
+INFO   [06:46:41.244] [main] o.r.Reflections -  Reflections took 52 ms to scan 1 urls, producing 36 keys and 46 values  
+INFO   [06:46:41.701] [main] o.h.Version -  HHH000412: Hibernate Core {5.2.15.Final} 
+INFO   [06:46:41.703] [main] o.h.c.Environment -  HHH000206: hibernate.properties not found 
+INFO   [06:46:41.720] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [06:46:42.858] [main] o.h.a.c.Version -  HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+INFO   [06:46:44.743] [main] o.h.d.Dialect -  HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL94Dialect 
+INFO   [06:47:50.178] [main] o.h.e.j.e.i.LobCreatorBuilderImpl -  HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException 
+INFO   [06:47:50.182] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@50778bde 
+INFO   [06:47:50.464] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.util.Currency] overrides previous : org.hibernate.type.CurrencyType@789dd6bf 
+INFO   [06:47:50.465] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Duration] overrides previous : org.hibernate.type.DurationType@1e6d30c0 
+INFO   [06:47:50.465] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Instant] overrides previous : org.hibernate.type.InstantType@38929da 
+INFO   [06:47:50.465] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDate] overrides previous : org.hibernate.type.LocalDateType@69d667a5 
+INFO   [06:47:50.465] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDateTime] overrides previous : org.hibernate.type.LocalDateTimeType@7fe87c0e 
+INFO   [06:47:50.465] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalTime] overrides previous : org.hibernate.type.LocalTimeType@8f4b803 
+INFO   [06:47:50.466] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetDateTime] overrides previous : org.hibernate.type.OffsetDateTimeType@42f9873e 
+INFO   [06:47:50.466] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetTime] overrides previous : org.hibernate.type.OffsetTimeType@18483b8b 
+INFO   [06:47:50.466] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.ZonedDateTime] overrides previous : org.hibernate.type.ZonedDateTimeType@24fc2c80 
+INFO   [06:47:52.596] [main] i.d.s.ServerFactory -  Starting Banking-api 
+INFO   [06:47:52.739] [main] o.e.j.s.SetUIDListener -  Opened application@6879e983{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [06:47:52.740] [main] o.e.j.s.SetUIDListener -  Opened admin@196d684b{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [06:47:52.744] [main] o.e.j.s.Server -  jetty-9.4.10.v20180503; built: 2018-05-03T15:56:21.710Z; git: daa59876e6f384329b122929e70a80934569428c; jvm 1.8.0_171-8u171-b11-1~deb9u1-b11 
+INFO   [06:47:53.077] [main] r.v.d.g.m.i.f.j.p.JerseyProviderInstaller -  providers = 
+
+    Dynamic features
+        (banking.oauth.OAuthDynamicFeature)
+ 
+INFO   [06:47:53.674] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /api/auth (banking.oauth.api.controller.SecurityController)
+    GET     /api/bankAccounts/ (banking.accounts.api.controller.AccountsController)
+    POST    /api/bankAccounts/ (banking.accounts.api.controller.AccountsController)
+    GET     /api/bankAccounts/newNumber (banking.accounts.api.controller.AccountsController)
+    PUT     /api/bankAccounts/{ID} (banking.accounts.api.controller.AccountsController)
+    GET     /api/bankAccounts/{bankAccountId} (banking.accounts.api.controller.AccountsController)
+    GET     /api/bankTransfers (banking.transactions.api.controller.BankTransferController)
+    POST    /api/bankTransfers (banking.transactions.api.controller.BankTransferController)
+    GET     /api/bankTransfers/{bankAccountId} (banking.transactions.api.controller.BankTransferController)
+    POST    /api/customers (banking.customers.api.controller.CustomerController)
+    GET     /api/customers/ (banking.customers.api.controller.CustomerController)
+    GET     /api/customers/dni/{dni} (banking.customers.api.controller.CustomerController)
+    GET     /api/customers/{customerId} (banking.customers.api.controller.CustomerController)
+    PUT     /api/customers/{id} (banking.customers.api.controller.CustomerController)
+    GET     /swagger (io.federecio.dropwizard.swagger.SwaggerResource)
+    GET     /swagger.{type:json|yaml} (io.swagger.jaxrs.listing.ApiListingResource)
+ 
+INFO   [06:47:53.677] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4af44f2a{/,null,AVAILABLE} 
+INFO   [06:47:53.686] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [06:47:53.698] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2ba08f26{/,null,AVAILABLE} 
+INFO   [06:47:53.713] [main] o.e.j.s.AbstractConnector -  Started application@6879e983{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [06:47:53.714] [main] o.e.j.s.AbstractConnector -  Started admin@196d684b{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [06:47:53.718] [main] o.e.j.s.Server -  Started @74939ms 
+INFO   [06:51:35.585] [dw-21 - POST /api/auth] o.h.h.i.QueryTranslatorFactoryInitiator -  HHH000397: Using ASTQueryTranslatorFactory 
+INFO   [06:51:44.905] [dw-17 - GET /api/customers?page=1&pageSize=10] b.o.OAuthDynamicFeature -  jwsClaims: header={alg=HS512},body={sub=admin, customerId=0, userName=admin, role=admin},signature=c4ZAIkJ26mF4D3BkMnzfrPXHSow0Ry4N_zaSx9gd-xsHS2XtUdewk4so0N7Q1EYTqT9JBQLdLaIS9F0CW6Hfog 
+INFO   [06:51:44.905] [dw-17 - GET /api/customers?page=1&pageSize=10] b.o.OAuthDynamicFeature -  customerId: 0 
+INFO   [06:53:15.416] [dw-16 - POST /api/customers] b.o.OAuthDynamicFeature -  jwsClaims: header={alg=HS512},body={sub=admin, customerId=0, userName=admin, role=admin},signature=c4ZAIkJ26mF4D3BkMnzfrPXHSow0Ry4N_zaSx9gd-xsHS2XtUdewk4so0N7Q1EYTqT9JBQLdLaIS9F0CW6Hfog 
+INFO   [06:53:15.416] [dw-16 - POST /api/customers] b.o.OAuthDynamicFeature -  customerId: 0 
+INFO   [06:53:19.099] [dw-16 - POST /api/customers] b.c.a.CustomerApplicationService -  CustomerDto [id=0, dni=40225391, firstName=rocio del pilar, lastName=yallico, email=ropyh@gmail.com, userName=ropyh, password=password, active=true] 
+INFO   [06:53:19.099] [dw-16 - POST /api/customers] b.c.a.CustomerApplicationService -  User [username=ropyh, password=$2a$15$9SapXUfsD7cNDMCon6Aka.8sBQWnZlQRd3AiKpqCsBptxj/R4ure., enabled=true, customerId=0, userRole=[member]] 
+INFO   [06:53:19.719] [dw-20 - GET /api/customers?page=1&pageSize=10] b.o.OAuthDynamicFeature -  jwsClaims: header={alg=HS512},body={sub=admin, customerId=0, userName=admin, role=admin},signature=c4ZAIkJ26mF4D3BkMnzfrPXHSow0Ry4N_zaSx9gd-xsHS2XtUdewk4so0N7Q1EYTqT9JBQLdLaIS9F0CW6Hfog 
+INFO   [06:53:19.721] [dw-20 - GET /api/customers?page=1&pageSize=10] b.o.OAuthDynamicFeature -  customerId: 0 
+INFO   [07:13:42.015] [Thread-13] o.e.j.s.AbstractConnector -  Stopped application@6879e983{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [07:13:42.018] [Thread-13] o.e.j.s.AbstractConnector -  Stopped admin@196d684b{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [07:13:42.034] [Thread-13] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@2ba08f26{/,null,UNAVAILABLE} 
+INFO   [07:13:42.084] [Thread-13] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@4af44f2a{/,null,UNAVAILABLE} 
+INFO   [07:14:06.673] [main] i.d.s.DefaultServerFactory -  Registering jersey handler with root path prefix: / 
+INFO   [07:14:06.676] [main] i.d.s.DefaultServerFactory -  Registering admin handler with root path prefix: / 
+INFO   [07:14:06.698] [main] i.d.a.AssetsBundle -  Registering AssetBundle with name: swagger-assets for path /swagger-static/* 
+INFO   [07:14:06.765] [main] i.d.a.AssetsBundle -  Registering AssetBundle with name: swagger-oauth2-connect for path /oauth2-redirect.html/* 
+INFO   [07:14:06.901] [main] o.r.Reflections -  Reflections took 84 ms to scan 1 urls, producing 36 keys and 46 values  
+INFO   [07:14:07.691] [main] o.h.Version -  HHH000412: Hibernate Core {5.2.15.Final} 
+INFO   [07:14:07.694] [main] o.h.c.Environment -  HHH000206: hibernate.properties not found 
+INFO   [07:14:07.716] [main] i.d.h.SessionFactoryFactory -  Entity classes: [] 
+INFO   [07:14:09.929] [main] o.h.a.c.Version -  HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+INFO   [07:14:12.298] [main] o.h.d.Dialect -  HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL94Dialect 
+INFO   [07:15:20.478] [main] o.h.e.j.e.i.LobCreatorBuilderImpl -  HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException 
+INFO   [07:15:20.481] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@36dafa24 
+INFO   [07:15:20.842] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.util.Currency] overrides previous : org.hibernate.type.CurrencyType@95cecc5 
+INFO   [07:15:20.843] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Duration] overrides previous : org.hibernate.type.DurationType@48b3b1b8 
+INFO   [07:15:20.844] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.Instant] overrides previous : org.hibernate.type.InstantType@b86cb18 
+INFO   [07:15:20.844] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDate] overrides previous : org.hibernate.type.LocalDateType@29c244e 
+INFO   [07:15:20.844] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalDateTime] overrides previous : org.hibernate.type.LocalDateTimeType@6cc8da1c 
+INFO   [07:15:20.845] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.LocalTime] overrides previous : org.hibernate.type.LocalTimeType@39a3984c 
+INFO   [07:15:20.845] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetDateTime] overrides previous : org.hibernate.type.OffsetDateTimeType@4404a6b 
+INFO   [07:15:20.845] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.OffsetTime] overrides previous : org.hibernate.type.OffsetTimeType@671da0f9 
+INFO   [07:15:20.846] [main] o.h.t.BasicTypeRegistry -  HHH000270: Type registration [java.time.ZonedDateTime] overrides previous : org.hibernate.type.ZonedDateTimeType@4d2f9e3c 
+INFO   [07:15:23.671] [main] i.d.s.ServerFactory -  Starting Banking-api 
+INFO   [07:15:23.938] [main] o.e.j.s.SetUIDListener -  Opened application@c0004b7{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [07:15:23.938] [main] o.e.j.s.SetUIDListener -  Opened admin@63880be9{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [07:15:23.958] [main] o.e.j.s.Server -  jetty-9.4.10.v20180503; built: 2018-05-03T15:56:21.710Z; git: daa59876e6f384329b122929e70a80934569428c; jvm 1.8.0_171-8u171-b11-1~deb9u1-b11 
+INFO   [07:15:24.410] [main] r.v.d.g.m.i.f.j.p.JerseyProviderInstaller -  providers = 
+
+    Dynamic features
+        (banking.oauth.OAuthDynamicFeature)
+ 
+INFO   [07:15:25.238] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /api/auth (banking.oauth.api.controller.SecurityController)
+    GET     /api/bankAccounts/ (banking.accounts.api.controller.AccountsController)
+    POST    /api/bankAccounts/ (banking.accounts.api.controller.AccountsController)
+    GET     /api/bankAccounts/newNumber (banking.accounts.api.controller.AccountsController)
+    PUT     /api/bankAccounts/{ID} (banking.accounts.api.controller.AccountsController)
+    GET     /api/bankAccounts/{bankAccountId} (banking.accounts.api.controller.AccountsController)
+    GET     /api/bankTransfers (banking.transactions.api.controller.BankTransferController)
+    POST    /api/bankTransfers (banking.transactions.api.controller.BankTransferController)
+    GET     /api/bankTransfers/{bankAccountId} (banking.transactions.api.controller.BankTransferController)
+    POST    /api/customers (banking.customers.api.controller.CustomerController)
+    GET     /api/customers/ (banking.customers.api.controller.CustomerController)
+    GET     /api/customers/dni/{dni} (banking.customers.api.controller.CustomerController)
+    GET     /api/customers/{customerId} (banking.customers.api.controller.CustomerController)
+    PUT     /api/customers/{id} (banking.customers.api.controller.CustomerController)
+    GET     /swagger (io.federecio.dropwizard.swagger.SwaggerResource)
+    GET     /swagger.{type:json|yaml} (io.swagger.jaxrs.listing.ApiListingResource)
+ 
+INFO   [07:15:25.241] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@72b53f27{/,null,AVAILABLE} 
+INFO   [07:15:25.256] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [07:15:25.268] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@71b7e9c8{/,null,AVAILABLE} 
+INFO   [07:15:25.284] [main] o.e.j.s.AbstractConnector -  Started application@c0004b7{HTTP/1.1,[http/1.1]}{0.0.0.0:8080} 
+INFO   [07:15:25.287] [main] o.e.j.s.AbstractConnector -  Started admin@63880be9{HTTP/1.1,[http/1.1]}{0.0.0.0:8081} 
+INFO   [07:15:25.288] [main] o.e.j.s.Server -  Started @82362ms 
+INFO   [07:16:31.713] [dw-21 - POST /api/customers] b.o.OAuthDynamicFeature -  jwsClaims: header={alg=HS512},body={sub=admin, customerId=0, userName=admin, role=admin},signature=c4ZAIkJ26mF4D3BkMnzfrPXHSow0Ry4N_zaSx9gd-xsHS2XtUdewk4so0N7Q1EYTqT9JBQLdLaIS9F0CW6Hfog 
+INFO   [07:16:31.713] [dw-21 - POST /api/customers] b.o.OAuthDynamicFeature -  customerId: 0 
+INFO   [07:16:31.964] [dw-21 - POST /api/customers] o.h.h.i.QueryTranslatorFactoryInitiator -  HHH000397: Using ASTQueryTranslatorFactory 
+INFO   [07:16:35.768] [dw-21 - POST /api/customers] b.c.a.CustomerApplicationService -  CustomerDto [id=0, dni=10283087, firstName=pepito, lastName=perez, email=password@gmail.com, userName=10283087, password=password, active=true] 
+INFO   [07:16:35.768] [dw-21 - POST /api/customers] b.c.a.CustomerApplicationService -  User [username=10283087, password=$2a$15$ortWt3DlzQTDuLRrFTrTveRx6AVywTQpKtYuAbeA9iCUUTblmtF6u, enabled=true, customerId=0, userRole=[member]] 
+INFO   [07:16:37.622] [dw-17 - GET /api/customers?page=1&pageSize=10] b.o.OAuthDynamicFeature -  jwsClaims: header={alg=HS512},body={sub=admin, customerId=0, userName=admin, role=admin},signature=c4ZAIkJ26mF4D3BkMnzfrPXHSow0Ry4N_zaSx9gd-xsHS2XtUdewk4so0N7Q1EYTqT9JBQLdLaIS9F0CW6Hfog 
+INFO   [07:16:37.623] [dw-17 - GET /api/customers?page=1&pageSize=10] b.o.OAuthDynamicFeature -  customerId: 0 

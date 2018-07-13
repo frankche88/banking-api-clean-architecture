@@ -10,7 +10,9 @@ import banking.bundles.HbnBundle;
 import banking.customers.domain.repository.CustomerRepository;
 import banking.customers.infrastructure.hibernate.repository.CustomerHibernateRepository;
 import banking.security.domain.repository.UserRepository;
+import banking.security.domain.repository.UserRoleRepository;
 import banking.security.infrastructure.hibernate.repository.UserHibernateRepository;
+import banking.security.infrastructure.hibernate.repository.UserRoleHibernateRepository;
 
 public class HbnModule extends AbstractModule {
 
@@ -29,6 +31,8 @@ public class HbnModule extends AbstractModule {
         bind(CustomerRepository.class).to(CustomerHibernateRepository.class);
         
         bind(UserRepository.class).to(UserHibernateRepository.class);
+        
+        bind(UserRoleRepository.class).to(UserRoleHibernateRepository.class);
     }
 
 }
