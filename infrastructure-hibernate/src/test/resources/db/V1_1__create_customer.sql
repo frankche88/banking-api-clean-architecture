@@ -1,3 +1,4 @@
+CREATE SEQUENCE hibernate_sequence;
 CREATE TABLE customer (
   customer_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(50) NOT NULL,

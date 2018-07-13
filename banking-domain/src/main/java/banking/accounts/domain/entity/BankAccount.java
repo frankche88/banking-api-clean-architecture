@@ -16,7 +16,7 @@ import banking.customers.domain.entity.Customer;
 public class BankAccount {
 	private long id = 0;
     private String number;
-    private BigDecimal balance = null;
+    private BigDecimal balance = new BigDecimal("1000");
     private boolean isLocked;
     private Customer customer;
 

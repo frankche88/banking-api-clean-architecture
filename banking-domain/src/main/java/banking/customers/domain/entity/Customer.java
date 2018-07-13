@@ -10,8 +10,17 @@ public class Customer {
     private String lastName;
     private Set<BankAccount> bankAccounts;
     private String documentNumber;
+    private Boolean active = true; 
 
-    public String getDocumentNumber() {
+    public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public String getDocumentNumber() {
 		return documentNumber;
 	}
 

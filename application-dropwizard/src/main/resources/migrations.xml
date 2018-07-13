@@ -8,9 +8,9 @@
 
 	<changeSet id="1" author="frankche88">
 		<createTable tableName="customer">
-			<column name="customer_id" type="bigint" autoIncrement="true"
+			<column name="customer_id" type="bigint" autoIncrement="true" defaultValueSequenceNext="customer_id_seq"
 				startWith="100">
-				<constraints primaryKey="true" nullable="false" />
+				<constraints primaryKey="true" nullable="false"  primaryKeyName ="pk_customer"/>
 			</column>
 			<column name="first_name" type="varchar(50)">
 				<constraints nullable="false" />
@@ -38,9 +38,9 @@
 
 	<changeSet id="2" author="frankche88">
 		<createTable tableName="bank_account">
-			<column name="bank_account_id" type="bigint"
+			<column name="bank_account_id" type="bigint" defaultValueSequenceNext="bank_account_id_seq"
 				autoIncrement="true" startWith="100">
-				<constraints primaryKey="true" nullable="false" />
+				<constraints primaryKey="true" nullable="false" primaryKeyName ="pk_bank_account"/>
 			</column>
 			<column name="number" type="varchar(50)">
 				<constraints nullable="false" />
@@ -90,7 +90,7 @@
 
 	<changeSet id="4" author="frankche88">
 		<createTable tableName="user_roles">
-			<column name="user_role_id" type="bigint" autoIncrement="true"
+			<column name="user_role_id" type="bigint" autoIncrement="true"  defaultValueSequenceNext="user_role_id_seq"
 				startWith="100">
 				<constraints primaryKey="true" nullable="false" primaryKeyName ="pk_roles"/>
 			</column>

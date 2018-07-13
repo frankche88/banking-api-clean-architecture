@@ -5,14 +5,12 @@
 <hibernate-mapping package="banking.customers.domain.entity">
 	<class name="Customer" table="customer">
         <id name="id" column="customer_id">
-            <generator class="sequence">
-             <param name="sequence">customer_customer_id_seq</param>
-         </generator>
+            <generator class="native"/>
         </id>
         <property name="firstName" column="first_name"/>
         <property name="lastName" column="last_name"/>
         <property name="documentNumber" column="document_number"/>
-        
+        <property name="active" column="active" />
         <set name="bankAccounts" inverse="true" cascade="all">
             <key column="customer_id" not-null="true"/>
             <one-to-many class="banking.accounts.domain.entity.BankAccount"/>

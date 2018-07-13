@@ -45,7 +45,7 @@ public class UpdateCustomerDto extends RequestBaseDto {
 		return lastName;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return active;
 	}
 	

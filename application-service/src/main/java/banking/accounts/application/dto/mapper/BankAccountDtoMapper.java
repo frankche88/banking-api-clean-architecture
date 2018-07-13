@@ -64,6 +64,8 @@ public class BankAccountDtoMapper {
 		
 		bankAccount.setNumber(dto.getNumber());
 		
+		bankAccount.setBalance(dto.getBalance());
+		
 		return bankAccount;
 	}
 

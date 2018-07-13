@@ -36,6 +36,8 @@ public class CustomerToCustomerDtoMapper {
 		customer.setFirstName(dto.getFirstName());
 
 		customer.setLastName(dto.getLastName());
+		
+		customer.setActive(dto.isActive());
 
 		return customer;
 	}
@@ -66,6 +68,10 @@ public class CustomerToCustomerDtoMapper {
 
 		if (dto.getLastName() != null) {
 			customer.setLastName(dto.getLastName());
+		}
+		
+		if (dto.isActive() != null) {
+			customer.setActive(dto.isActive());
 		}
 
 		return customer;
