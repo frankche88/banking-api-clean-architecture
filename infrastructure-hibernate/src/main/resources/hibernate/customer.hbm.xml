@@ -5,7 +5,9 @@
 <hibernate-mapping package="banking.customers.domain.entity">
 	<class name="Customer" table="customer">
         <id name="id" column="customer_id">
-            <generator class="native"/>
+            <generator class="sequence">
+             <param name="sequence">customer_customer_id_seq</param>
+         </generator>
         </id>
         <property name="firstName" column="first_name"/>
         <property name="lastName" column="last_name"/>

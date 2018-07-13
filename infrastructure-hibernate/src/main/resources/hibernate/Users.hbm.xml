@@ -5,7 +5,6 @@
     <class name="banking.security.domain.entity.User" table="users">
         <id name="username" type="string" >
             <column name="username" length="45" not-null="true"/>
-
         </id>
         <property name="customerId" type="long">
             <column name="customer_id" not-null="true" />

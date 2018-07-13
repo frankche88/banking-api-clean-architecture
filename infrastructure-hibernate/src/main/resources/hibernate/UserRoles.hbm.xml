@@ -5,7 +5,9 @@
     <class name="banking.security.domain.entity.UserRole" table="user_roles">
         <id name="userRoleId" type="java.lang.Long">
             <column name="user_role_id" />
-            <generator class="identity" />
+            <generator class="sequence">
+             <param name="sequence">user_roles_user_role_id_seq</param>
+         </generator>
         </id>
         <many-to-one name="user" class="banking.security.domain.entity.User" fetch="select">
             <column name="username" length="45" not-null="true" />
