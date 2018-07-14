@@ -16,8 +16,8 @@ server:
 # Database settings.
 database:
   driverClass: org.postgresql.Driver
-  user: root
-  password: root123456
+  user: ${BD_USER}
+  password: ${DB_PASSWORD}
   url: 'jdbc:postgresql://dbbanking.cwmjjsstjgmk.us-east-1.rds.amazonaws.com:5432/db_pg_banking'
   maxWaitForConnection: 1s
   validationQuery: "/* MyService Health Check */ SELECT 1"
