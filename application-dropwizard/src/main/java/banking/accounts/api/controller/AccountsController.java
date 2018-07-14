@@ -50,7 +50,7 @@ public class AccountsController {
 		httpMethod = "GET",
 	    response = ResponseBankAccountDto.class,
 	    responseContainer = "List")
-	public Response listAll(@DefaultValue("1") @QueryParam("pageNumber") int pageNumber,
+	public Response listAll(@DefaultValue("1") @QueryParam("page") int pageNumber,
 			@DefaultValue("10") @QueryParam("pageSize") int pageSize) {
 		try {
 

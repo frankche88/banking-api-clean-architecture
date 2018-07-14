@@ -1,10 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-			url "$artifactoryUrl/plugins-release"
-	    }
-       //jcenter()
+       jcenter()
     }
     dependencies {
         classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
@@ -41,7 +38,7 @@ runShadow {
 
 run {
     //args 'db', 'migrate', 'src/main/resources/bankingDesa.yml'
-    args 'server', 'src/main/resources/bankingDesa.yml'
+    args 'server', 'src/main/resources/banking.yml'
 
 }
 

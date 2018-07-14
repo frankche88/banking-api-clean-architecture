@@ -49,7 +49,7 @@ public class CustomerController {
 	    response = CustomerDto.class,
 	    responseContainer = "List")
 	public Response listAll(
-			@DefaultValue("1") @QueryParam("pageNumber")int pageNumber, 
+			@DefaultValue("1") @QueryParam("page")int pageNumber, 
 			@DefaultValue("10") @QueryParam("pageSize")int pageSize) {
 		
 		try {
