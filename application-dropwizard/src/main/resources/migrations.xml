@@ -203,6 +203,31 @@
 		
 		
 	</changeSet>
+	
+	<changeSet author="bvera" id="insert-users-2">
+        
+
+        <insert dbms="h2, mysql, postgresql" tableName="users">
+            <column name="username" value="client2" />
+            <column name="password"
+                value="$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y" />
+            <column name="customer_id" value="1" />
+            <column name="email" value="micorreo@gmail.com" />
+            <column name="enabled" valueBoolean="true" />
+        </insert>
+
+        <insert dbms="h2, mysql, postgresql" tableName="user_roles">
+            <column name="username" value="client2" />
+            <column name="role" value="member" />
+        </insert>
+        
+        <update tableName="users">
+            <column name="email"
+                value="micorreo2@hotmail.com" />
+            <where>username in ('admin', 'client1') </where>
+        </update>
+
+    </changeSet>
 
 
 

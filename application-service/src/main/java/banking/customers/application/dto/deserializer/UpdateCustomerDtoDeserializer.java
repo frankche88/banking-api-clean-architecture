@@ -41,6 +41,8 @@ public class UpdateCustomerDtoDeserializer extends JsonDeserializer<UpdateCustom
             
             dto = new UpdateCustomerDto(id, firstName, lastName, active);
             
+            System.out.println("UpdateCustomerDtoDeserializer.deserialize()" + dto);
+            
             
     	} catch(Exception ex) {
     		logger.error(ex.getMessage(), ex);

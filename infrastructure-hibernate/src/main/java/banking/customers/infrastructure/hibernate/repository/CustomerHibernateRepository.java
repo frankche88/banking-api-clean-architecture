@@ -14,6 +14,7 @@ import banking.common.application.EntityNotFoundResultException;
 import banking.common.infrastructure.hibernate.repository.BaseHibernateRepository;
 import banking.customers.domain.entity.Customer;
 import banking.customers.domain.repository.CustomerRepository;
+import banking.security.domain.entity.User;
 
 @Named
 @Singleton
@@ -35,13 +36,50 @@ public class CustomerHibernateRepository extends BaseHibernateRepository<Custome
 			Predicate condition = criteriaBuilder.equal(from.get("id"), id);
 		
 			TypedQuery<Customer> typedQuery = getSession().createQuery(select.where(condition));
-		
-			return typedQuery.getSingleResult();
+			
+			//return typedQuery.getSingleResult();
+			
+			Customer customer = typedQuery.getSingleResult();
+			
+			User user = findUserByIdCustomer(id);
+			
+			customer.setUser(user);
+			
+			return customer;
+			
 		} catch (javax.persistence.NoResultException e) {
 			
 			throw new EntityNotFoundResultException(e.getMessage(), e);
 		}
 	}
+	
+	
+	
+    public User findUserByIdCustomer(long idCustomer) {
+        
+        try {
+
+            CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
+        
+            CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+        
+            Root<User> from = criteriaQuery.from(User.class);
+        
+            CriteriaQuery<User> select = criteriaQuery.select(from);
+        
+            Predicate condition = criteriaBuilder.equal(from.get("customerId"), idCustomer);
+        
+            TypedQuery<User> typedQuery = getSession().createQuery(select.where(condition));
+            
+            
+        
+            return typedQuery.getSingleResult();
+        } catch (javax.persistence.NoResultException e) {
+            
+            throw new EntityNotFoundResultException(e.getMessage(), e);
+        }
+    }
+	
 
 	@Override
 	public Customer findByDni(String dni) {

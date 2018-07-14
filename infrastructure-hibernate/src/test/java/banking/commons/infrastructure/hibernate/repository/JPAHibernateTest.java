@@ -29,6 +29,9 @@ public class JPAHibernateTest {
 		
 		configuration.addResource("hibernate/customer.hbm.xml");
 		configuration.addResource("hibernate/bankAccount.hbm.xml");
+		
+		configuration.addResource("hibernate/Users.hbm.xml");
+        configuration.addResource("hibernate/UserRoles.hbm.xml");
 
 		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 
@@ -74,11 +77,13 @@ public class JPAHibernateTest {
 
 	@After
 	public void tearAfter() {
+	    if( session != null)
 		session.close();
 	}
 
 	@AfterClass
 	public static void tearDown() {
+	    if( sessionFactory != null)
 		sessionFactory.close();
 	}
 

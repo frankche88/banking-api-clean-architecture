@@ -45,9 +45,17 @@ public class UpdateCustomerDto extends RequestBaseDto {
 		return lastName;
 	}
 
-	public Boolean isActive() {
+	public Boolean getActive() {
 		return active;
 	}
+
+    @Override
+    public String toString() {
+        return "UpdateCustomerDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", active="
+                + active + "]";
+    }
+	
+	
 	
 	
 

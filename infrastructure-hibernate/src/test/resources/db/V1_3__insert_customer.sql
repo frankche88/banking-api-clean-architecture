@@ -1,9 +1,11 @@
 delete from bank_account;
 delete from customer;
+delete from users;
 INSERT INTO customer(customer_id, first_name, last_name, active) VALUES(1, 'Juan', 'Perez', 1);
 INSERT INTO customer(customer_id, first_name, last_name, active) VALUES(2, 'Julio', 'Morales', 1);
 
-
+INSERT INTO users(username, password, customer_id, email, enabled) VALUES('frankche88', 'password', '1', 'frank.che88@gmail.com', 1);
+INSERT INTO users(username, password, customer_id, email, enabled) VALUES('julio', 'password', '2', 'julio.che88@gmail.com', 1);
 
 
 INSERT INTO bank_account(number, balance, locked, customer_id) VALUES('123-456-001', 1500, 0, 1);

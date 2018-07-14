@@ -141,6 +141,8 @@ public class CustomerApplicationService {
 		
 
 		customer = customerDtoMapper.mergeDtoToCustomer(dto, customer);
+		
+		System.out.println("CustomerApplicationService.update()" + customer);
 
 		// todo: save usuario
 

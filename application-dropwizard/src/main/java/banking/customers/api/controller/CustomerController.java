@@ -90,11 +90,7 @@ public class CustomerController {
 		try {
 			
 			Customer  customer = customerApplicationService.getCustomerById(id);
-			if(customer == null) {
-				
-				return this.responseHandler.getNotFoundObjectResponse("Customer not found");
-				
-			}
+			
 			return this.responseHandler.getOkObjectResponse(customerDtoMapper.mapper(customer));
 			
 		} catch (EntityNotFoundResultException ex) {	

@@ -3,6 +3,7 @@ package banking.customers.domain.entity;
 import java.util.Set;
 
 import banking.accounts.domain.entity.BankAccount;
+import banking.security.domain.entity.User;
 
 public class Customer {
 	private long id;
@@ -10,13 +11,16 @@ public class Customer {
     private String lastName;
     private Set<BankAccount> bankAccounts;
     private String documentNumber;
-    private Boolean active = true; 
+    private boolean active = true;
+    
+    private User user;
+    
 
-    public Boolean getActive() {
+    public boolean getActive() {
 		return active;
 	}
 
-	public void setActive(Boolean active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
@@ -66,4 +70,20 @@ public class Customer {
     public void setBankAccounts(Set<BankAccount> bankAccounts) {
         this.bankAccounts = bankAccounts;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", bankAccounts="
+                + bankAccounts + ", documentNumber=" + documentNumber + ", active=" + active + ", user=" + user + "]";
+    }
+    
+    
 }

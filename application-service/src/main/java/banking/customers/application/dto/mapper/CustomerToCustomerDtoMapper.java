@@ -21,6 +21,17 @@ public class CustomerToCustomerDtoMapper {
 
 		CustomerDto dto = new CustomerDto(customer.getId(), customer.getDocumentNumber(), customer.getFirstName(),
 				customer.getLastName());
+		
+		if(customer.getUser() != null) {
+		    
+		    String password = "";
+		    
+		    String username = customer.getUser().getUsername();
+		    
+		    String email = customer.getUser().getEmail();
+		    
+		    dto.setUserData(username, password, email);
+		}
 
 		return dto;
 	}
@@ -70,8 +81,8 @@ public class CustomerToCustomerDtoMapper {
 			customer.setLastName(dto.getLastName());
 		}
 		
-		if (dto.isActive() != null) {
-			customer.setActive(dto.isActive());
+		if (dto.getActive() != null) {
+			customer.setActive(dto.getActive());
 		}
 
 		return customer;
