@@ -1,0 +1,5 @@
+y UI XML
+
+https://cpeverfqaeastuscls.eastus.cloudapp.azure.com:8071/
+
+https://cpeverfqaeastuscls.eastus.cloudapp.azure.com:8071/verificacion-autenticidad 
