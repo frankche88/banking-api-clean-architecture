@@ -91,3 +91,9 @@ curl -H "Content-Type: application/json" \
   -X PUT http://localhost:9001/gen/20131312955/usuario-sol/6 \
   -d '{"idususol":2,"idempresacli":1,"usuariosol":"20512691529MODDATO1","clavesol":"moddatos","nombre":"david","apellido":"echevarria","tipodocumento":"6","nrodocumento":"20512691529"}'; echo
 
+
+
+
+
+.
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJ1c2VySWQiOiIxIiwic3ViIjoiYWRtaW4iLCJqdGkiOiIwNDNiNWEzMC02ZTRiLTQ3NDctODgzOS0wNjRmZTViZGE5ODUiLCJlbWFpbCI6ImFkbWluQGhlbnJ5Z3VzdGF2by5jb20iLCJyb2xlIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTUzOTMwNjY4MiwiaXNzIjoiaHR0cHM6Ly9zaG9wcGluZ2NhcnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9zaG9wcGluZ2NhcnQuY29tIn0.OrqUMcE05E97aWlvWPgzWuiAX8DgDpTtgU-MLcxy-ek"
