@@ -145,23 +145,11 @@ namespace Common.Messaging
 -----------------------------------------------------------------------------
  
 		
-		HTTP Method: POST
-URL: https://fcm.googleapis.com/fcm/send
-Header:
+10.1109/ICSPIS.2016.7869895
 
-Content-Type:	application/json
-Authorization:	key=AIzaSyBn6w8KiDpB6Fm3UPq4qzVjewjhrurRqZ0
+10.1109/TrustCom/BigDataSE.2018.00169
 
-Body:
-
-{
-"notification": {
-  "title": "New order", 
-  "body": "A new order was created:" + idOrder
- },
- "to" : "dO7j0zRnQWw:APA91bFTSHJd0l1GNcsuQ3yplRqMRWM7C_nC431OFn1Dvo6ee4xUwzYyl8cBw18X6qvegA35eaN1tR83y28Z_zbbJP0Zo3F_oy0JwsqC34QTZlP_WyGtsma00hHa8JNuSg1oawlUb7bS"
-}
-	
+10.23919/ChiCC.2018.8483951
 
 
 
